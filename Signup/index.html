@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Courgette&family=Great+Vibes&family=Lobster&family=Roboto:wght@300&family=Sacramento&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="Signup.css">
 
     <title>Sign Up</title>
@@ -19,15 +23,21 @@
 
 <body>
     <div class="main-container">
-        <form class="form-signin border">
+        <form class="form-signin border px-3">
+            <h1>Shoppit.</h1>
+            <img src="../Images/Online-Shopping-Cart-PNG-Background-Image.png" alt="online shopping cart" width="100px"
+                height="100px" class="mb-3">
+
             <div class="tab">
-                <div class="tablinks shadow-none " onclick="tabMenu(event,'signup')">
+                <div class="tablinks shadow-none active" onclick="tabMenu(event,'signup')" id="signup-tab">
                     SIGNUP
                 </div>
                 <div class="tablinks shadow-none " onclick="tabMenu(event,'login')">
                     LOGIN
                 </div>
             </div>
+
+
             <div id="signup" class="tabcontent">
                 <div class="labels border rounded">
                     <i class="far fa-id-badge text-muted m-auto"></i>
@@ -45,8 +55,10 @@
                     <i class="fa fa-lock text-muted m-auto"></i>
                     <input type="text" class="form-control border-0 shadow-none" placeholder="Password">
                 </div>
-                <button class="btn btn-primary w-100 mt-2">Sign Up</button>
+                <button class="btn btn-lg mt-3 btn-primary w-100 mt-2">Sign Up</button>
             </div>
+
+
             <div id="login" class="tabcontent">
                 <div class="labels border rounded">
                     <i class="far fa-envelope text-muted m-auto"></i>
@@ -56,7 +68,7 @@
                     <i class="fa fa-lock text-muted m-auto"></i>
                     <input type="text" class="form-control border-0 shadow-none" placeholder="Password">
                 </div>
-                <button class="btn btn-primary w-100 mt-2">Sign Up</button>
+                <button class="btn btn-lg mt-3 btn-primary w-100 mt-2">Sign Up</button>
             </div>
 
             <!-- <div id="london" class="tabcontent">
