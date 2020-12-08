@@ -28,18 +28,67 @@
                 <img src="../Images/Online-Shopping-Cart-PNG-Background-Image.png" alt="cart Images" width="50px">
                 <h2 class="ml-1 pt-1">Shoppit.</h2>
             </div>
-            <div class="nav2">
-                <a href="#">Home</a>
-                <a href="#">Catalog</a>
-                <a href="#">Shop</a>
-                <a href="#">Pages</a>
-            </div>
+
             <div class="nav3 border">
-                <i class="fa fa-search text-muted"></i>
                 <input type="text" class="border-0 shadow-none" placeholder="Search for products here">
+                <i class="fa fa-search"></i>
+            </div>
+
+            <div class="nav2">
+                <div>
+                    <a href="#">Home</a>
+                    <div class="nav-items border">
+                        <a href="">Material</a>
+                        <a href="">Products</a>
+                        <a href="">Contact us</a>
+                        <a href="">Media</a>
+                    </div>
+                </div>
+
+                <div>
+                    <a href="#">Catalog</a>
+                </div>
+
+                <div>
+                    <a href="#">Shop <i class="fas fa-shopping-bag"></i></a>
+                </div>
+
+                <div>
+                    <a href="#">Cart <i class="fab fa-opencart"></i></a>
+                </div>
             </div>
         </nav>
     </header>
+
+    <section>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active" id="c1">
+                    <!-- <img src="..." class="d-block w-100" alt="..."> -->
+                </div>
+                <div class="carousel-item" id="c2">
+                    <!-- <img src="..." class="d-block w-100" alt="..."> -->
+                </div>
+                <div class="carousel-item" id="c3">
+                    <!-- <img src="..." class="d-block w-100" alt="..."> -->
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+
+    </section>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
