@@ -81,7 +81,7 @@ nav {
 }
 
 #c1 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../Images/shopping-bags.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../Images/freestocks-_3Q3tsJ01nc-unsplash.jpg');
     background-size: 100%;
     background-position: center;
     width: 100vw;
@@ -89,7 +89,7 @@ nav {
 }
 
 #c2 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../Images/Shopping-woman.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../Images/nathalia-rosa-rWMIbqmOxrY-unsplash.jpg');
     background-size: 100%;
     background-position: center;
     width: 100vw;
@@ -97,9 +97,14 @@ nav {
 }
 
 #c3 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../Images/shopping.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../Images/artem-beliaikin-49mCO5ZRQDk-unsplash.jpg');
     background-size: 100%;
     background-position: center;
     width: 100vw;
     height: 80vh;
+}
+.cp{
+    word-spacing: 3px;
+    letter-spacing: 3px;
+    font-size: 18px;
 }
