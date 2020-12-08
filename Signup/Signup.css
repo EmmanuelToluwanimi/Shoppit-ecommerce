@@ -1,7 +1,7 @@
 body {
     margin: 0px;
     padding: 0px;
-    background-image: linear-gradient(rgba(9, 44, 138, 0.5), rgba(43, 26, 105, 0.5)), url('../Images/diego-ph-5LOhydOtTKU-unsplash.jpg');
+    background-image: linear-gradient(rgba(9, 44, 138, 0.3), rgba(43, 26, 105, 0.3)), url('../Images/bruno-kelzer-LvySG1hvuzI-unsplash.jpg');
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
@@ -29,7 +29,7 @@ form {
     margin: auto;
     background-color: #fff;
     border-radius: 20px;
-    box-shadow: 5px 8px 16px 5px rgba(6, 23, 122, 0.5)
+    box-shadow: 5px 8px 16px 5px rgba(6, 0, 0, 0.3)
 }
 
 /* .nav-menu {
