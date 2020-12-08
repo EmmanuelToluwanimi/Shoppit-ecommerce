@@ -23,7 +23,7 @@ img {
 }
 
 form {
-    width: 35%;
+    width: 80%;
     /* max-width: 330px; */
     padding: 15px;
     margin: auto;
@@ -85,4 +85,10 @@ i {
     to {
         opacity: 1;
     }
+}
+
+@media screen and (min-width:600px) {
+   form{
+       width: 35%;
+   }
 }
