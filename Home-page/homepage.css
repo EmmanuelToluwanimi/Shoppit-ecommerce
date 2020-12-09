@@ -1,7 +1,9 @@
-nav {
-    position: sticky;
+header {
+    position: fixed;
     top: 0px;
     background-color: #fff;
+    z-index: 11;
+    width: 100%;
 }
 
 .nav1 {
@@ -148,7 +150,8 @@ nav {
 .navbar-collapse {
     display: none;
 }
-.step2 h3{
+
+.step2 h3 {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
@@ -192,16 +195,19 @@ nav {
 .txto {
     margin-top: 40%;
 }
-.img2{
+
+.img2 {
     width: 150px;
     height: 200px;
 }
-.temi{
+
+.temi {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.temi:hover{
+
+.temi:hover {
     box-shadow: 0px 5px 5px 5px rgba(6, 0, 0, 0.1);
     border-radius: 15px;
 }
