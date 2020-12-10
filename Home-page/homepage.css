@@ -229,6 +229,10 @@ header {
     visibility: visible;
 }
 
+.futa{
+    background: rgb(15, 15, 15);
+}
+
 @media screen and (max-width:800px) {
     #c1, #c2, #c3 {
         height: 50vh;
