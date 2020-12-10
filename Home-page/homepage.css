@@ -230,7 +230,10 @@ header {
 }
 
 .futa{
-    background: rgb(15, 15, 15);
+    background: rgb(7, 7, 7);
+}
+.futa2{
+    background-color: rgb(30, 30, 30);
 }
 
 @media screen and (max-width:800px) {
