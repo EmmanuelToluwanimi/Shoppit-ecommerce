@@ -206,6 +206,11 @@ header {
     width: 150px;
     height: 200px;
 }
+.tolu{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .temi {
     display: flex;
@@ -216,6 +221,12 @@ header {
 .temi:hover {
     box-shadow: 0px 5px 5px 5px rgba(6, 0, 0, 0.1);
     border-radius: 15px;
+}
+.add-cart{
+    visibility: hidden;
+}
+.temi:hover .add-cart{
+    visibility: visible;
 }
 
 @media screen and (max-width:800px) {
@@ -235,5 +246,16 @@ header {
     }
     .p-slide {
         width: 80%;
+    }
+    .step3{
+        text-align: center;
+    }
+    .step3 ul{
+        list-style: none;
+    
+        padding: 0px;
+    }
+    .step3 h4{
+        text-align: center;
     }
 }
