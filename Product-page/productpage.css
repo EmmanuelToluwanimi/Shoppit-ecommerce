@@ -1,3 +1,7 @@
+body {
+    background-color: #f2f2f2;
+}
+
 header {
     position: fixed;
     top: 0px;
@@ -125,6 +129,27 @@ header {
 
 .futa2 {
     background-color: rgb(30, 30, 30);
+}
+
+section {
+    margin-top: 11vh;
+}
+
+.smalltext{
+    font-size: 14px;
+}
+.uno{
+    /* color: blue; */
+    font-size: 30px;
+    /* height: 30px;
+    width: 60px; */
+}
+.slds{
+    width: 15vw;
+}
+.slds img{
+    width: 100%;
+    height: 70%;
 }
 
 @media screen and (max-width:800px) {
