@@ -1,6 +1,7 @@
-body{
+body {
     background-color: #f2f2f2;
 }
+
 header {
     position: fixed;
     top: 0px;
@@ -87,11 +88,11 @@ header {
 }
 
 #c1 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../Images/freestocks-_3Q3tsJ01nc-unsplash.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../Images/freestocks-_3Q3tsJ01nc-unsplash.jpg');
     background-size: cover;
     background-position: center;
     width: 100vw;
-    height: 80vh;
+    height: 85vh;
     background-repeat: no-repeat;
 }
 
@@ -100,16 +101,29 @@ header {
     background-size: cover;
     background-position: center;
     width: 100vw;
-    height: 80vh;
+    height: 85vh;
     background-repeat: no-repeat;
 }
 
+#c3 img {
+    position: relative;
+}
+
+.frff {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    bottom: 0px;
+}
+
 #c3 {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../Images/artem-beliaikin-49mCO5ZRQDk-unsplash.jpg');
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../Images/artem-beliaikin-49mCO5ZRQDk-unsplash.jpg'); */
     background-size: cover;
     background-position: center;
     width: 100vw;
-    height: 80vh;
+    height: 85vh;
     background-repeat: no-repeat;
 }
 
@@ -152,8 +166,10 @@ header {
 
 .navbar-collapse {
     display: none;
+    height: 35vh;
 }
-.step2{
+
+.step2 {
     background-color: #fff;
 }
 
@@ -206,7 +222,8 @@ header {
     width: 150px;
     height: 200px;
 }
-.tolu{
+
+.tolu {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -222,23 +239,26 @@ header {
     box-shadow: 0px 5px 5px 5px rgba(6, 0, 0, 0.1);
     border-radius: 15px;
 }
-.add-cart{
+
+.add-cart {
     visibility: hidden;
 }
-.temi:hover .add-cart{
+
+.temi:hover .add-cart {
     visibility: visible;
 }
 
-.futa{
+.futa {
     background: rgb(7, 7, 7);
 }
-.futa2{
+
+.futa2 {
     background-color: rgb(30, 30, 30);
 }
 
 @media screen and (max-width:800px) {
     #c1, #c2, #c3 {
-        height: 50vh;
+        height: 70vh;
     }
     #nav01 {
         display: none;
@@ -254,15 +274,53 @@ header {
     .p-slide {
         width: 80%;
     }
-    .step3{
+    .step3 {
         text-align: center;
     }
-    .step3 ul{
+    .step3 ul {
         list-style: none;
-    
         padding: 0px;
     }
-    .step3 h4{
+    .step3 h4 {
         text-align: center;
+    }
+    .carousel-caption h1 {
+        font-size: 30px;
+    }
+    .overlay1 {
+        position: absolute;
+        bottom: 0px;
+        top: 0px;
+        background: rgba(0, 0, 0, 0.5);
+        height: 33%;
+        width: 80%;
+        color: white;
+        font-size: 20px;
+        padding: 20px;
+        text-align: left;
+    }
+    .overlay2 {
+        position: absolute;
+        /* bottom: 0px; */
+        top: 33.33%;
+        background: rgba(0, 0, 0, 0.5);
+        height: 33%;
+        width: 80%;
+        color: white;
+        font-size: 20px;
+        padding: 20px;
+        text-align: left;
+    }
+    .overlay3 {
+        position: absolute;
+        /* bottom: 0px; */
+        top: 66.66%;
+        background: rgba(0, 0, 0, 0.5);
+        height: 33%;
+        width: 80%;
+        color: white;
+        font-size: 20px;
+        padding: 20px;
+        text-align: left;
     }
 }
