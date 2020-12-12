@@ -132,7 +132,7 @@ header {
 }
 
 section {
-    margin-top: 11vh;
+    margin-top: 6%;
 }
 
 .smalltext {
@@ -153,6 +153,7 @@ section {
     margin-left: 20px;
     border: none;
 }
+
 .slds:hover {
     box-shadow: 0px 5px 5px 5px rgba(6, 0, 0, 0.1);
 }
@@ -175,8 +176,30 @@ section {
     width: 100%;
     overflow: auto;
 }
-.gsm::-webkit-scrollbar{
-    display: none;
+
+.gsm::-webkit-scrollbar {
+    /* width: 10px; */
+    height: 5px;
+}
+
+.gsm::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.gsm::-webkit-scrollbar-thumb {
+    background: rgb(226, 231, 250);
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(95, 95, 97);
 }
 
 @media screen and (max-width:800px) {
@@ -185,5 +208,26 @@ section {
     }
     #nav02 {
         display: flex;
+    }
+    .bb {
+        margin-top: 15px;
+    }
+    section {
+        margin-top: 10vh;
+    }
+    .dd {
+        margin-top: 10px;
+    }
+    .a-slide {
+        width: 400vw;
+    }
+    .slds {
+        width: 60vw;
+    }
+}
+
+@media screen and (min-width:1000px) {
+    .a-slide {
+        width: 300vw;
     }
 }
