@@ -169,7 +169,7 @@ section {
 
 .a-slide {
     display: flex;
-    width: 120vw;
+    width: 140vw;
 }
 
 .gsm {
@@ -199,7 +199,10 @@ section {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgb(95, 95, 97);
+    background: rgb(164, 164, 167);
+}
+.f-widget{
+    display: none;
 }
 
 @media screen and (max-width:800px) {
@@ -213,7 +216,7 @@ section {
         margin-top: 15px;
     }
     section {
-        margin-top: 10vh;
+        margin-top: 9vh;
     }
     .dd {
         margin-top: 10px;
@@ -224,9 +227,32 @@ section {
     .slds {
         width: 60vw;
     }
+    .f-widget{
+        position: sticky;
+        bottom: 0px;
+        width: 100%;
+        right: 8px;
+        z-index: 2;
+        display: flex;
+    }
+    .f-widget .add-cart{
+        width: 75%;
+    }
+    .f-widget .ee{
+        color: white;
+        width: 20%;
+        height: 100%;
+        font-size: 30px;
+        text-align: center;
+        margin-left: auto;
+        /* background-color: #fff; */
+    }
+    .ff{
+        display: none;
+    }
 }
 
-@media screen and (min-width:1000px) {
+@media screen and (width:1024px) {
     .a-slide {
         width: 300vw;
     }
