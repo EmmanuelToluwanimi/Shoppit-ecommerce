@@ -36,7 +36,7 @@ function validate(action) {
         regex = /[a-zA-Z]$/;
         fn = action.find('[placeholder="Fullname"]').val();
         console.log(fn);
-        
+
         if (regex.test(fn)) {
             $('#signup').find('[placeholder="Fullname"]').css('color', 'black');
         }
@@ -47,8 +47,8 @@ function validate(action) {
     else if (action.find('[placeholder="Email"]').focus()) {
         // regex = /^[a-zA-Z0-9]*[@]{1}[a-z]{2,6}[.]{1}[a-z]{2,5}$/;
         eml = action.find('[placeholder="Email"]').val();
-        console.log(eml); 
-          
+        console.log(eml);
+
         if (regex.test(eml)) {
             $('#signup').find('[placeholder="Email"]').css('color', 'black');
         }
