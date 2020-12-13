@@ -256,6 +256,62 @@ header {
     background-color: rgb(30, 30, 30);
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(164, 164, 167);
+}
+
+.slds {
+    width: 30vw;
+    height: 45vh;
+    display: flex;
+    margin-left: 20px;
+    border: none;
+}
+
+.slds:hover {
+    box-shadow: 0px 5px 5px 5px rgba(6, 0, 0, 0.1);
+}
+
+.slds img {
+    width: 100%;
+    height: 70%;
+}
+
+.mumu {
+    list-style: none;
+}
+
+.a-slide {
+    display: flex;
+    width: 140vw;
+}
+
+.gsm {
+    width: 100%;
+    overflow: auto;
+}
+
+.gsm::-webkit-scrollbar {
+    /* width: 10px; */
+    height: 5px;
+}
+
+.gsm::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.gsm::-webkit-scrollbar-thumb {
+    background: rgb(226, 231, 250);
+}
+
 @media screen and (max-width:800px) {
     #c1, #c2, #c3 {
         height: 70vh;
@@ -322,5 +378,11 @@ header {
         font-size: 20px;
         padding: 20px;
         text-align: left;
+    }
+}
+
+@media screen and (width:1024px) {
+    .a-slide {
+        width: 300vw;
     }
 }
