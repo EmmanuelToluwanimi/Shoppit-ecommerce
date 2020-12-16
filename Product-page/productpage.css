@@ -201,7 +201,8 @@ section {
 ::-webkit-scrollbar-thumb {
     background: rgb(164, 164, 167);
 }
-.f-widget{
+
+.f-widget {
     display: none;
 }
 
@@ -227,7 +228,7 @@ section {
     .slds {
         width: 60vw;
     }
-    .f-widget{
+    .f-widget {
         position: sticky;
         bottom: 0px;
         width: 100%;
@@ -235,10 +236,10 @@ section {
         z-index: 2;
         display: flex;
     }
-    .f-widget .add-cart{
+    .f-widget .add-cart {
         width: 75%;
     }
-    .f-widget .ee{
+    .f-widget .ee {
         color: white;
         width: 20%;
         height: 100%;
@@ -247,7 +248,7 @@ section {
         margin-left: auto;
         /* background-color: #fff; */
     }
-    .ff{
+    .ff {
         display: none;
     }
 }

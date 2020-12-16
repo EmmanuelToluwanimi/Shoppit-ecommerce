@@ -274,6 +274,7 @@ header {
     display: flex;
     margin-left: 20px;
     border: none;
+    transition: all 1s ease;
 }
 
 .slds:hover {
@@ -329,6 +330,12 @@ header {
     }
     .p-slide {
         width: 80%;
+    }
+    .a-slide {
+        width: 400vw;
+    }
+    .slds {
+        width: 70vw;
     }
     .step3 {
         text-align: center;
