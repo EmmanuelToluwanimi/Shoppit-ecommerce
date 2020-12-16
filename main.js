@@ -1,4 +1,4 @@
-// object of all products.
+// array of objects of all products.
 var products = [
     {
         id: 1,
@@ -25,8 +25,8 @@ var products = [
         id: 4,
         title: 'Iphone11 4/64GB',
         price: 750.99,
-        spec: 'Iphone11 4/64GB Green 64G_original-new-apple-i-phone-11-dual-12-mp-c_variants-3',
-        imageUrl: '../Images/Green 64G_original-new-apple-i-phone-11-dual-12-mp-c_variants-3.jpg'
+        spec: 'Iphone11 4/64GB White 64G_original-new-apple-i-phone-11-dual-12-mp-c_variants-3',
+        imageUrl: '../Images/Black256G_original-new-apple-i-phone-11-dual-12-mp-c_variants-2.jpg'
     },
     {
         id: 5,
@@ -45,7 +45,7 @@ var products = [
     {
         id: 7,
         title: 'Sunlight Detergent',
-        price: 10.99,
+        price: 5.99,
         spec: 'Sunlight 2in1 Spring Sensations Handwash Washing Powder 900g.',
         imageUrl: '../Images/sunlight.jpg'
     },
@@ -54,7 +54,71 @@ var products = [
         title: 'Apple MacBook Pro',
         price: 2999.99,
         spec: 'Apple MacBook Pro - 16" Touch Bar - Intel Core I9 - 16GB - AMD Radeon Pro 5500M - 1TB SSD - Space Gray.',
-        imageUrl: '../Images/sunlight.jpg'
+        imageUrl: '../Images/applelappy.jpg'
     },
+];
 
-]
+//products sent to local storage
+var sproduct = JSON.stringify(products);
+localStorage.setItem('myProducts', sproduct);
+
+//getItems of products from l-storage
+var getProduct = localStorage.getItem('myProducts');
+var awaProduct = JSON.parse(getProduct);
+
+
+
+
+//Products to display in body of Homepage.
+$('#homepage').html(function () {
+    displayproducts1();
+    displayproducts2();
+})
+function displayproducts1() {
+    var spy = '';
+    for (let i = 0; i < 4; i++) {
+        const ele = awaProduct[i];
+        // console.log(ele);
+        spy += `<div class="col-sm-12 col-md-3 p-2 tolu">
+        <div class="temi p-2">
+            <img src=${ele.imageUrl}
+                alt="iphone11" class="img2">
+            <div class="shomo mt-2 px-2">
+                <div>${ele.title}</div>
+                <del class="text-muted">$20,000</del>
+                <div>$${ele.price} </div>
+            </div>
+            <button class="add-cart btn btn-primary shadow mt-2 w-100" id=${ele.id}>
+                ADD TO CART
+            </button>
+        </div>
+     </div>
+      `;
+    }
+    $('#homepage').find('#shop').find('.show1').append(spy);
+}
+function displayproducts2() {
+    var spy = '';
+    for (let i = 4; i < awaProduct.length; i++) {
+        const ele = awaProduct[i];
+        // console.log(ele);
+        spy += `<div class="col-sm-12 col-md-3 p-2 tolu">
+        <div class="temi p-2">
+            <img src=${ele.imageUrl}
+                alt="iphone11" class="img2">
+            <div class="shomo mt-2 px-2">
+                <div>${ele.title}</div>
+                <del class="text-muted">$20,000</del>
+                <div>$${ele.price} </div>
+            </div>
+            <button class="add-cart btn btn-primary shadow mt-2 w-100" id=${ele.id}>
+                ADD TO CART
+            </button>
+        </div>
+        </div>
+      `;
+    }
+    $('#homepage').find('#shop').find('.show2').append(spy);
+}
+
+

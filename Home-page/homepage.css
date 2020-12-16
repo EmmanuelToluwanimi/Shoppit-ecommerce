@@ -219,8 +219,9 @@ header {
 }
 
 .img2 {
-    width: 150px;
+    width: 70%;
     height: 200px;
+    margin: auto;
 }
 
 .tolu {
@@ -232,7 +233,7 @@ header {
 .temi {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .temi:hover {
@@ -316,6 +317,21 @@ header {
 @media screen and (max-width:800px) {
     #c1, #c2, #c3 {
         height: 70vh;
+    }
+    .img2{
+        width: 50%;
+    }
+    .temi {
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+    }
+    .tolu{
+        width: 80%;
+        margin: auto;
+    }
+    .shomo{
+        margin-left: 10px;
     }
     #nav01 {
         display: none;
