@@ -68,6 +68,9 @@ $(document).ready(function () {
         },
     ];
 
+    //variables
+    var senderos = [];
+
     //products sent to local storage
     var sproduct = JSON.stringify(products);
     localStorage.setItem('myProducts', sproduct);
@@ -77,13 +80,12 @@ $(document).ready(function () {
     var awaProduct = JSON.parse(getProduct);
 
 
-
-
     //Products to display in body of Homepage.
     $('#homepage').html(function () {
         displayproducts1();
         displayproducts2();
     })
+
     function displayproducts1() {
         var spy = '';
         for (let i = 0; i < 4; i++) {
@@ -108,6 +110,7 @@ $(document).ready(function () {
         }
         $('#homepage').find('#shop').find('.show1').append(spy);
     }
+
     function displayproducts2() {
         var spy = '';
         for (let i = 4; i < awaProduct.length; i++) {
@@ -139,20 +142,23 @@ $(document).ready(function () {
     //function gets the id of a btn and its full details in localstorage
     function getbtnid(x) {
         $(document).on('click', `#${x}`, function () {
-            productpageload(awaProduct[this.id - 10]);
+            var dato = awaProduct[this.id - 10];
+
+            senderos[0] = dato;
+            // console.log(senderos);
+            var sender = JSON.stringify(senderos);
+            localStorage.setItem('xs', sender);
+
             window.location.href = "../product-page/index.html";
         })
     }
 
-    //function to display selected product in productpage
-    function productpageload(action) {
-        console.log(action);
-    }
-    
+
+    //selected products detail set in ls is gotten and siaplayed in productpage; 
     $('#productpage').html(function () {
-        productpageload();
-        console.log(action);
-        
+        var sender = localStorage.getItem('xs');
+        sender = JSON.parse(sender);
+        console.log(sender);
     })
 
 
