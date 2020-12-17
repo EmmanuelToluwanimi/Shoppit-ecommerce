@@ -156,10 +156,50 @@ $(document).ready(function () {
 
     //selected products detail set in ls is gotten and siaplayed in productpage; 
     $('#productpage').html(function () {
+        productInfo();
+    })
+    function productInfo() {
         var sender = localStorage.getItem('xs');
         sender = JSON.parse(sender);
-        console.log(sender);
-    })
+        console.log(sender[0].title);
+        var sendme = sender[0];
+
+        var dis = `
+        <div class="row">
+        <div class="col-md-6">
+            <img src=${sendme.imageUrl} alt="applelaptop" width="100%">
+        </div>
+        <div class="col-md-6 pt-2 pb-3">
+            <h4>
+                ${sendme.spec}
+            </h4>
+
+            <div class="smalltext">Brand: <a href="#">HMG</a> | <a href="#">Similar products from Host</a>
+            </div>
+
+            <div class="smalltext">
+                <span class="fa fa-star text-warning"></span>
+                <span class="fa fa-star text-warning"></span>
+                <span class="fa fa-star text-warning"></span>
+                <span class="fa fa-star text-muted"></span>
+                <span class="fa fa-star text-muted"></span>
+                <span class="text-muted">( Seller has 3 star ratings )</span>
+            </div>
+
+            <div>
+                <h4 class="mt-2 pt-2 border-top">$${sendme.price}</h4>
+                <del>$25,000.00</del>
+            </div>
+
+            <button class="btn ff btn-primary mt-3 shadow w-100 btn-lg" id=${sendme.id}>ADD TO CART
+                <i class="fab fa-opencart"></i>
+            </button>
+
+        </div>
+        </div>        
+        `;
+        $('#productpage').find('.aa').html(dis);
+    }
 
 
 })
