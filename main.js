@@ -71,6 +71,8 @@ $(document).ready(function () {
     //variables
     var senderos = [];
 
+    var cart = [];
+
     //products sent to local storage
     var sproduct = JSON.stringify(products);
     localStorage.setItem('myProducts', sproduct);
@@ -91,11 +93,12 @@ $(document).ready(function () {
         for (let i = 0; i < 4; i++) {
             const ele = awaProduct[i];
             // console.log(ele);
-            spy += `<div class="col-sm-12 col-md-3 p-2 tolu" id=${ele.sid}>
+            spy += `<div class="col-sm-12 col-md-3 p-2 tolu" >
             <div class="temi p-2">
             <img src=${ele.imageUrl}
-                alt="iphone11" class="img2">
+                alt="iphone11" class="img2" id=${ele.sid}>
             <div class="shomo mt-2 px-2">
+                <div class="d-none msg border border-success text-center text-success smalltext">Added to cart</div>
                 <div>${ele.title}</div>
                 <del class="text-muted">$20,000</del>
                 <div>$${ele.price} </div>
@@ -106,7 +109,8 @@ $(document).ready(function () {
             </div>
             </div>
             `;
-            getbtnid(`${ele.sid}`)
+            getbtnid(`${ele.id}`);
+            getprdid(`${ele.sid}`);
         }
         $('#homepage').find('#shop').find('.show1').append(spy);
     }
@@ -116,11 +120,12 @@ $(document).ready(function () {
         for (let i = 4; i < awaProduct.length; i++) {
             const ele = awaProduct[i];
             // console.log(ele);
-            spy += `<div class="col-sm-12 col-md-3 p-2 tolu" id=${ele.sid}>
+            spy += `<div class="col-sm-12 col-md-3 p-2 tolu" >
             <div class="temi p-2">
             <img src=${ele.imageUrl}
-                alt="iphone11" class="img2">
+                alt="iphone11" class="img2" id=${ele.sid}>
             <div class="shomo mt-2 px-2">
+                <div class="d-none msg border border-success text-center text-success smalltext">Added to cart</div>
                 <div>${ele.title}</div>
                 <del class="text-muted">$20,000</del>
                 <div>$${ele.price} </div>
@@ -132,7 +137,8 @@ $(document).ready(function () {
             </div>
             `;
             // console.log(`${ele.sid}`);
-            getbtnid(`${ele.sid}`)
+            getbtnid(`${ele.id}`);
+            getprdid(`${ele.sid}`);
         }
 
         $('#homepage').find('#shop').find('.show2').append(spy);
@@ -140,7 +146,7 @@ $(document).ready(function () {
 
 
     //function gets the id of a btn and its full details in localstorage
-    function getbtnid(x) {
+    function getprdid(x) {
         $(document).on('click', `#${x}`, function () {
             var dato = awaProduct[this.id - 10];
 
@@ -199,6 +205,33 @@ $(document).ready(function () {
         </div>        
         `;
         $('#productpage').find('.aa').html(dis);
+    }
+
+
+    function getbtnid(q) {
+        $(document).on('click', `#${q}`, function () {
+            // console.log(this.id);
+
+            //displays success message when btn to add to cart is clicked.
+            $(this).closest('.temi').find('.msg').addClass('d-block');
+            setTimeout(() => {
+                $(this).closest('.temi').find('.msg').removeClass('d-block');
+            }, 1500);
+
+            // console.log(awaProduct[this.id - 1]);
+
+            var carto = awaProduct[this.id - 1];
+            cart.push(carto);
+            // console.log(cart);
+            var carter = JSON.stringify(cart);
+            localStorage.setItem('carts', carter);
+
+            var carty =localStorage.getItem('carts');
+            carty = JSON.parse(carty);
+            console.log(carty.length);
+            $('.cartnum').find('.badge').html(carty.length);
+            
+        })
     }
 
 

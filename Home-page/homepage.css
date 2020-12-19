@@ -314,11 +314,15 @@ header {
     background: rgb(226, 231, 250);
 }
 
+.smalltext {
+    font-size: 14px;
+}
+
 @media screen and (max-width:800px) {
     #c1, #c2, #c3 {
         height: 70vh;
     }
-    .img2{
+    .img2 {
         width: 50%;
     }
     .temi {
@@ -326,11 +330,11 @@ header {
         flex-direction: column;
         /* align-items: center; */
     }
-    .tolu{
+    .tolu {
         width: 80%;
         margin: auto;
     }
-    .shomo{
+    .shomo {
         margin-left: 10px;
     }
     #nav01 {

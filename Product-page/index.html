@@ -53,8 +53,11 @@
                     <a href="#">Shop <i class="fas fa-shopping-bag"></i></a>
                 </div>
 
-                <div>
-                    <a href="#">Cart <i class="fab fa-opencart"></i></a>
+                <div class="cartnum">
+                    <a href="../Cart-page/index.html">Cart
+                        <!-- <i class="fab fa-opencart"></i> -->
+                        <span class="badge badge-primary"></span>
+                    </a>
                 </div>
             </div>
         </nav>
@@ -75,12 +78,12 @@
                 <div class="nav2">
                     <div class="px-2 py-2">
                         <a href="#">Home</a>
-                        <div class="nav-items border">
+                        <!-- <div class="nav-items border">
                             <a href="">Material</a>
                             <a href="">Products</a>
                             <a href="">Contact us</a>
                             <a href="">Media</a>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="px-2 py-2">
@@ -110,7 +113,7 @@
 
             <div class="row">
                 <div class="col-md-8 aa shadow rounded p-2 bg-white">
-                   
+
                 </div>
                 <div class="col-md-4 bb">
                     <div class="card shadow-sm">
@@ -327,3 +330,13 @@
 
 <script src="../style.js"></script>
 <script src="../main.js"></script>
+<script>
+    function chkcartnum() {
+        var carty = localStorage.getItem('carts');
+        carty = JSON.parse(carty);
+        console.log(carty.length);
+        $('.cartnum').find('.badge').html(carty.length);
+    }
+    chkcartnum();
+
+</script>
