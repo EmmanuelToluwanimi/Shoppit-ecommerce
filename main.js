@@ -103,13 +103,13 @@ $(document).ready(function () {
                 <del class="text-muted">$20,000</del>
                 <div>$${ele.price} </div>
             </div>
-            <button class="add-cart btn btn-primary shadow mt-2 w-100" id=${ele.id}>
+            <button class="addcartbtn btn btn-primary shadow mt-2 w-100" id=${ele.id}>
                 ADD TO CART
             </button>
             </div>
             </div>
             `;
-            getbtnid(`${ele.id}`);
+            // getbtnid(`${ele.id}`);
             getprdid(`${ele.sid}`);
         }
         $('#homepage').find('#shop').find('.show1').append(spy);
@@ -130,19 +130,43 @@ $(document).ready(function () {
                 <del class="text-muted">$20,000</del>
                 <div>$${ele.price} </div>
             </div>
-            <button class="add-cart btn btn-primary shadow mt-2 w-100" id=${ele.id}>
+            <button class="addcartbtn btn btn-primary shadow mt-2 w-100" id=${ele.id}>
                 ADD TO CART
             </button>
             </div>
             </div>
             `;
             // console.log(`${ele.sid}`);
-            getbtnid(`${ele.id}`);
+            // getbtnid(`${ele.id}`);
             getprdid(`${ele.sid}`);
         }
 
         $('#homepage').find('#shop').find('.show2').append(spy);
     }
+
+    $(document).on('click', `.addcartbtn`, function () {
+        // console.log(this.id);
+
+        //displays success message when btn to add to cart is clicked.
+        $(this).closest('.temi').find('.msg').addClass('d-block');
+        setTimeout(() => {
+            $(this).closest('.temi').find('.msg').removeClass('d-block');
+        }, 1500);
+
+        // console.log(awaProduct[this.id - 1]);
+
+        var carto = awaProduct[this.id - 1];
+        cart.push(carto);
+        console.log(cart);
+        var carter = JSON.stringify(cart);
+        localStorage.setItem('carts', carter);
+
+        var carty = localStorage.getItem('carts');
+        carty = JSON.parse(carty);
+        // console.log(carty.length);
+        $('.cartnum').find('.badge').html(carty.length);
+
+    })
 
 
     //function gets the id of a btn and its full details in localstorage
@@ -163,6 +187,7 @@ $(document).ready(function () {
     //selected products detail set in ls is gotten and siaplayed in productpage; 
     $('#productpage').html(function () {
         productInfo();
+        productaddcart();
     })
     function productInfo() {
         var sender = localStorage.getItem('xs');
@@ -197,7 +222,7 @@ $(document).ready(function () {
                 <del>$25,000.00</del>
             </div>
 
-            <button class="btn ff btn-primary mt-3 shadow w-100 btn-lg" id=${sendme.id}>ADD TO CART
+            <button class="addcartbtd btn ff btn-primary mt-3 shadow w-100 btn-lg" id=${sendme.id}>ADD TO CART
                 <i class="fab fa-opencart"></i>
             </button>
 
@@ -207,32 +232,31 @@ $(document).ready(function () {
         $('#productpage').find('.aa').html(dis);
     }
 
+    function productaddcart() {
+        $('#productpage').find('.addcartbtd').click(function () {
+            // console.log('wprked');
+            var sender = localStorage.getItem('xs');
+            sender = JSON.parse(sender);
+            var sendme = sender[0];
 
-    function getbtnid(q) {
-        $(document).on('click', `#${q}`, function () {
-            // console.log(this.id);
+            var carty = localStorage.getItem('carts');
+            carty = JSON.parse(carty);
+            carty.push(sendme);
+            // console.log(carty);
 
-            //displays success message when btn to add to cart is clicked.
-            $(this).closest('.temi').find('.msg').addClass('d-block');
-            setTimeout(() => {
-                $(this).closest('.temi').find('.msg').removeClass('d-block');
-            }, 1500);
-
-            // console.log(awaProduct[this.id - 1]);
-
-            var carto = awaProduct[this.id - 1];
-            cart.push(carto);
-            // console.log(cart);
-            var carter = JSON.stringify(cart);
+            var carter = JSON.stringify(carty);
             localStorage.setItem('carts', carter);
 
-            var carty =localStorage.getItem('carts');
-            carty = JSON.parse(carty);
-            console.log(carty.length);
-            $('.cartnum').find('.badge').html(carty.length);
-            
+            var cartp = localStorage.getItem('carts');
+            cartp = JSON.parse(cartp);
+            $('.cartnum').find('.badge').html(cartp.length);
         })
     }
+
+
+
+
+
 
 
 })
