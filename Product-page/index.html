@@ -26,7 +26,9 @@
         <nav class="navbar border-bottom shadow-sm" id="nav01">
             <div class="nav1">
                 <img src="../Images/Online-Shopping-Cart-PNG-Background-Image.png" alt="cart Images" width="50px">
-                <h2 class="ml-1 pt-1">Shoppit.</h2>
+                <h2 class="ml-1 pt-1">
+                    <a href="../Home-page/index.html">Shoppit.</a>
+                </h2>
             </div>
 
             <div class="nav3 border">
@@ -37,12 +39,12 @@
             <div class="nav2">
                 <div>
                     <a href="#">Home</a>
-                    <div class="nav-items border">
+                    <!-- <div class="nav-items border">
                         <a href="">Material</a>
                         <a href="">Products</a>
                         <a href="">Contact us</a>
                         <a href="">Media</a>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div>
@@ -170,8 +172,11 @@
                 </div>
             </div>
             <div class="f-widget mt-3 bg-white rounded p-2">
-                <button class="add-cart btn btn-primary shadow btn-lg">ADD TO CART</button>
-                <button class="ee btn btn-dark rounded shadow"><i class="fab fa-opencart"></i></button>
+                <button class="add-cart addcartbtd btn btn-primary shadow btn-lg">ADD TO CART</button>
+                <button class="ee btn btn-dark d-flex rounded shadow">
+                    <i class="fab fa-opencart"></i>
+                    <span class="badge p-2">0</span>
+                </button>
             </div>
 
             <div class="container bg-white sld mt-3 p-2 giggs">
@@ -335,7 +340,7 @@
         var carty = localStorage.getItem('carts');
         carty = JSON.parse(carty);
         console.log(carty.length);
-        $('.cartnum').find('.badge').html(carty.length);
+        $('.badge').html(carty.length);
     }
     chkcartnum();
 

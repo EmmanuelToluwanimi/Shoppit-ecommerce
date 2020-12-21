@@ -86,6 +86,7 @@ $(document).ready(function () {
     $('#homepage').html(function () {
         displayproducts1();
         displayproducts2();
+        homepageaddcart();
     })
 
     function displayproducts1() {
@@ -144,29 +145,39 @@ $(document).ready(function () {
         $('#homepage').find('#shop').find('.show2').append(spy);
     }
 
-    $(document).on('click', `.addcartbtn`, function () {
-        // console.log(this.id);
+    function homepageaddcart() {
+        $('#homepage').find('.addcartbtn').on('click', function () {
 
-        //displays success message when btn to add to cart is clicked.
-        $(this).closest('.temi').find('.msg').addClass('d-block');
-        setTimeout(() => {
-            $(this).closest('.temi').find('.msg').removeClass('d-block');
-        }, 1500);
+            //displays success message when btn to add to cart is clicked.
+            $(this).closest('.temi').find('.msg').addClass('d-block');
+            setTimeout(() => {
+                $(this).closest('.temi').find('.msg').removeClass('d-block');
+            }, 1500);
 
-        // console.log(awaProduct[this.id - 1]);
+            // console.log(awaProduct[this.id - 1]);
 
-        var carto = awaProduct[this.id - 1];
-        cart.push(carto);
-        console.log(cart);
-        var carter = JSON.stringify(cart);
-        localStorage.setItem('carts', carter);
+            var carto = awaProduct[this.id - 1];
+            cart.push(carto);
+            console.log(cart);
+            var carter = JSON.stringify(cart);
+            localStorage.setItem('carts', carter);
 
+            var carty = localStorage.getItem('carts');
+            carty = JSON.parse(carty);
+            // console.log(carty.length);
+            $('.cartnum').find('.badge').html(carty.length);
+
+        })
         var carty = localStorage.getItem('carts');
         carty = JSON.parse(carty);
-        // console.log(carty.length);
-        $('.cartnum').find('.badge').html(carty.length);
+        console.log(carty);
 
-    })
+        if (carty == null) {
+            cart = [];
+        } else {
+            cart = carty;
+        }
+    }
 
 
     //function gets the id of a btn and its full details in localstorage
@@ -249,7 +260,7 @@ $(document).ready(function () {
 
             var cartp = localStorage.getItem('carts');
             cartp = JSON.parse(cartp);
-            $('.cartnum').find('.badge').html(cartp.length);
+            $('.badge').html(cartp.length);
         })
     }
 
