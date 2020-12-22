@@ -195,7 +195,7 @@ section {
     background: rgb(226, 231, 250);
 }
 
-.jumbotron {
+.cartn {
     background-image: linear-gradient(rgba(30, 32, 37, 0.3), rgba(43, 26, 105, 0.3)), url('../Images/eduardo-soares-S-bDcSqbVrk-unsplash.jpg');
     background-size: cover;
     background-attachment: fixed;

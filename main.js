@@ -32,7 +32,7 @@ $(document).ready(function () {
             title: 'Iphone11 4/64GB',
             price: 750.99,
             spec: 'Iphone11 4/64GB White 64G_original-new-apple-i-phone-11-dual-12-mp-c_variants-3',
-            imageUrl: '../Images/Black256G_original-new-apple-i-phone-11-dual-12-mp-c_variants-2.jpg'
+            imageUrl: '../Images/iphone11s.jpg'
         },
         {
             id: 5,
@@ -268,12 +268,22 @@ $(document).ready(function () {
     //Functions for cartpage.
     $('#cartpage').html(function () {
         getcartdetails();
+        delspecproduct();
+        showandhidenocart();
     })
 
     function getcartdetails() {
         var cartp = localStorage.getItem('carts');
         cartp = JSON.parse(cartp);
         // console.log(cartp);
+
+        // if (cartp.length == 0) {
+        //     $('.nocart').show();
+        //     $('.cartlog').hide();
+        // } else {
+        //     $('.cartlog').show();
+        //     $('.nocart').hide();
+        // }
 
         var spy = '';
         for (items of cartp) {
@@ -294,6 +304,38 @@ $(document).ready(function () {
         }
         $('#cartpage').find('tbody').prepend(spy);
 
+    }
+
+    //functions to delete specific product from cart.
+    function delspecproduct() {
+        $(document).on('click', '.btn-danger', function () {
+            let z = $(this).closest('tr').index();
+            // console.log(z);
+
+            var cartp = localStorage.getItem('carts');
+            cartp = JSON.parse(cartp);
+
+            cartp.splice(z, 1);
+            cartp = localStorage.setItem('carts', JSON.stringify(cartp));
+
+            $(this).closest('tr').remove();
+
+            showandhidenocart();
+        })
+    }
+
+    function showandhidenocart() {
+        var cartp = localStorage.getItem('carts');
+        cartp = JSON.parse(cartp);
+        // console.log(cartp);
+
+        if (cartp.length == 0) {
+            $('.nocart').show();
+            $('.cartlog').hide();
+        } else {
+            $('.cartlog').show();
+            $('.nocart').hide();
+        }
     }
 
 
