@@ -228,25 +228,30 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: 0.5s ease;
 }
 
 .temi {
     display: flex;
     flex-direction: column;
     /* align-items: center; */
+    transition: 0.5s ease;
 }
 
 .temi:hover {
     box-shadow: 0px 5px 5px 5px rgba(6, 0, 0, 0.1);
     border-radius: 15px;
+    transition: 0.5s ease;
 }
 
 .add-cart {
     visibility: hidden;
+    transition: 0.3s ease;
 }
 
 .temi:hover .add-cart {
     visibility: visible;
+    transition: 0.3s ease;
 }
 
 .futa {
@@ -275,7 +280,7 @@ header {
     display: flex;
     margin-left: 20px;
     border: none;
-    transition: all 1s ease;
+    transition: all 0.5s ease;
 }
 
 .slds:hover {

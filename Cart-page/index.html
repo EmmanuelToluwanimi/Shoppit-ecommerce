@@ -26,7 +26,7 @@
         <nav class="navbar border-bottom shadow-sm" id="nav01">
             <div class="nav1">
                 <img src="../Images/Online-Shopping-Cart-PNG-Background-Image.png" alt="cart Images" width="50px">
-                <h2 class="ml-1 pt-1">Shoppit.</h2>
+                <h2 class="ml-1 pt-1"><a href="../Home-page/index.html">Shoppit.</a></h2>
             </div>
 
             <div class="nav3 border">
@@ -54,7 +54,7 @@
                 </div>
 
                 <div>
-                    <a href="#">Cart <i class="fab fa-opencart"></i></a>
+                    <a href="#">Cart <span class="badge badge-primary">0</span></a>
                 </div>
             </div>
         </nav>
@@ -75,12 +75,12 @@
                 <div class="nav2">
                     <div class="px-2 py-2">
                         <a href="#">Home</a>
-                        <div class="nav-items border">
+                        <!-- <div class="nav-items border">
                             <a href="">Material</a>
                             <a href="">Products</a>
                             <a href="">Contact us</a>
                             <a href="">Media</a>
-                        </div>
+                        </div> -->
                     </div>
 
                     <div class="px-2 py-2">
@@ -92,7 +92,9 @@
                     </div>
 
                     <div class="px-2 py-2">
-                        <a href="#" class="d-flex align-items-center">Cart <i class="fab fa-opencart ml-2"></i></a>
+                        <a href="#" class="d-flex align-items-center">Cart
+                            <span class="badge badge-primary">0</span>
+                        </a>
                     </div>
                 </div>
                 <div class="nav3 w-75 border">
@@ -107,7 +109,7 @@
         <div class="container">
             <div class="cartn d-flex jumbotron">
                 <h3>Your Shoppit Cart</h3>
-                <!-- <h3 class="cartnum">(0 items)</h3> -->
+                <h3 class="cartnum ml-2">(0 items)</h3>
             </div>
 
             <div class="container shadow rounded pt-3 mb-4">
@@ -126,18 +128,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><img src="../Images/pic15.png" class="img-fluid" width="50px"> </td>
-                                        <td colspan="2">Product Name Dada</td>
-
-                                        <td><input class="form-control" type="text" value="1" /></td>
-                                        <td class="text-right">124,90 €</td>
-                                        <td class="text-right">
-                                            <button class="btn btn-sm btn-danger">
-                                                <i class="fa fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    
 
                                     <tr>
                                         <td></td>
@@ -145,7 +136,7 @@
                                         <td></td>
                                         <td></td>
                                         <td>Sub-Total</td>
-                                        <td class="text-right">255,90 €</td>
+                                        <td class="text-right">$ 200.00</td>
                                     </tr>
                                     <tr>
                                         <td></td>
@@ -153,7 +144,7 @@
                                         <td></td>
                                         <td></td>
                                         <td>Shipping</td>
-                                        <td class="text-right">6,90 €</td>
+                                        <td class="text-right">$ 5.00</td>
                                     </tr>
                                     <tr>
                                         <td></td>
@@ -161,7 +152,7 @@
                                         <td></td>
                                         <td></td>
                                         <td><strong>Total</strong></td>
-                                        <td class="text-right"><strong>346,90 €</strong></td>
+                                        <td class="text-right"><strong>$ 200.00</strong></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -338,3 +329,15 @@
 
 <script src="../style.js"></script>
 <script src="../main.js"></script>
+
+<script>
+    function chkcartnum() {
+        var carty = localStorage.getItem('carts');
+        carty = JSON.parse(carty);
+        console.log(carty.length);
+        $('.badge').html(carty.length);
+        $('.cartnum').html(`( ${carty.length} Items )`)
+    }
+    chkcartnum();
+
+</script>

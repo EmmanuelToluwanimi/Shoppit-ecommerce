@@ -104,7 +104,7 @@ $(document).ready(function () {
                 <del class="text-muted">$20,000</del>
                 <div>$${ele.price} </div>
             </div>
-            <button class="addcartbtn btn btn-primary shadow mt-2 w-100" id=${ele.id}>
+            <button class="addcartbtn add-cart btn btn-primary shadow mt-2 w-100" id=${ele.id}>
                 ADD TO CART
             </button>
             </div>
@@ -131,7 +131,7 @@ $(document).ready(function () {
                 <del class="text-muted">$20,000</del>
                 <div>$${ele.price} </div>
             </div>
-            <button class="addcartbtn btn btn-primary shadow mt-2 w-100" id=${ele.id}>
+            <button class="addcartbtn add-cart btn btn-primary shadow mt-2 w-100" id=${ele.id}>
                 ADD TO CART
             </button>
             </div>
@@ -195,11 +195,12 @@ $(document).ready(function () {
     }
 
 
-    //selected products detail set in ls is gotten and siaplayed in productpage; 
+    //selected products detail set in ls is gotten and displayed in productpage; 
     $('#productpage').html(function () {
         productInfo();
         productaddcart();
     })
+
     function productInfo() {
         var sender = localStorage.getItem('xs');
         sender = JSON.parse(sender);
@@ -262,6 +263,37 @@ $(document).ready(function () {
             cartp = JSON.parse(cartp);
             $('.badge').html(cartp.length);
         })
+    }
+
+    //Functions for cartpage.
+    $('#cartpage').html(function () {
+        getcartdetails();
+    })
+
+    function getcartdetails() {
+        var cartp = localStorage.getItem('carts');
+        cartp = JSON.parse(cartp);
+        // console.log(cartp);
+
+        var spy = '';
+        for (items of cartp) {
+            spy += `
+            <tr>
+            <td><img src=${items.imageUrl} class="img-fluid" width="50px"> </td>
+            <td colspan="2">${items.title}</td>
+
+            <td><input class="form-control w-50 mx-auto" type="number" value="1" min="1" /></td>
+            <td class="text-right font-weight-bold">$ ${items.price}</td>
+            <td class="text-right">
+                <button class="btn btn-sm btn-danger" id=${items.id}>
+                    <i class="fa fa-trash"></i>
+                </button>
+            </td>
+            </tr>            
+            `;
+        }
+        $('#cartpage').find('tbody').prepend(spy);
+
     }
 
 
