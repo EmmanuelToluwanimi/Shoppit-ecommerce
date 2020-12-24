@@ -270,30 +270,25 @@ $(document).ready(function () {
         getcartdetails();
         delspecproduct();
         showandhidenocart();
+        linkcarttoproductpage();
+        calccart();
     })
 
     function getcartdetails() {
         var cartp = localStorage.getItem('carts');
         cartp = JSON.parse(cartp);
-        // console.log(cartp);
 
-        // if (cartp.length == 0) {
-        //     $('.nocart').show();
-        //     $('.cartlog').hide();
-        // } else {
-        //     $('.cartlog').show();
-        //     $('.nocart').hide();
-        // }
+
 
         var spy = '';
         for (items of cartp) {
             spy += `
             <tr>
-            <td><img src=${items.imageUrl} class="img-fluid" width="50px"> </td>
-            <td colspan="2">${items.title}</td>
+            <td><img src=${items.imageUrl} class="img-fluid img-click" width="50px"> </td>
+            <td colspan="2" class="title-click">${items.title}</td>
 
-            <td><input class="form-control w-50 mx-auto" type="number" value="1" min="1" /></td>
-            <td class="text-right font-weight-bold">$ ${items.price}</td>
+            <td><input class="item-qty form-control w-50 mx-auto" type="number" value="1" min="1" /></td>
+            <td class="item-price text-right font-weight-bold">$ ${items.price * 1}</td>
             <td class="text-right">
                 <button class="btn btn-sm btn-danger" id=${items.id}>
                     <i class="fa fa-trash"></i>
@@ -301,8 +296,12 @@ $(document).ready(function () {
             </td>
             </tr>            
             `;
+
         }
         $('#cartpage').find('tbody').prepend(spy);
+
+        // var wg = $('.item-qty').val();
+        // console.log(wg);
 
     }
 
@@ -337,6 +336,48 @@ $(document).ready(function () {
             $('.nocart').hide();
         }
     }
+
+    function linkcarttoproductpage() {
+        $(document).on('click', '.title-click , .img-click', function () {
+            var cartp = localStorage.getItem('carts');
+            cartp = JSON.parse(cartp);
+
+            let q = $(this).closest('tr').index();
+
+            senderos[0] = cartp[q];
+            // console.log(senderos[0]);
+
+            var sender = JSON.stringify(senderos);
+            localStorage.setItem('xs', sender);
+
+            window.location.href = "../product-page/index.html";
+        })
+    }
+
+    function calccart() {
+
+        var cartp = localStorage.getItem('carts');
+        cartp = JSON.parse(cartp);
+
+
+        $(document).on('keyup , click', '.item-qty', function () {
+
+            var prc = $(this).closest('tr').find('.item-qty').val();
+            // console.log(prc);
+
+            var tt = $(this).closest('tr').index();
+            var cp = prc * cartp[tt].price;
+
+            var ptotal = $(this).closest('tr').find('.item-price').html(`$ ${cp}`);
+
+        })
+
+
+
+
+    }
+
+
 
 
 
