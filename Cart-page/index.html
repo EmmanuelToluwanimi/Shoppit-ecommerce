@@ -135,7 +135,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    
+
 
                                     <tr>
                                         <td></td>
@@ -143,7 +143,7 @@
                                         <td></td>
                                         <td></td>
                                         <td>Sub-Total</td>
-                                        <td class="text-right">$ 200.00</td>
+                                        <td class="text-right sub-total">$ 200.00</td>
                                     </tr>
                                     <tr>
                                         <td></td>
@@ -159,7 +159,7 @@
                                         <td></td>
                                         <td></td>
                                         <td><strong>Total</strong></td>
-                                        <td class="text-right"><strong>$ 200.00</strong></td>
+                                        <td class="text-right"><strong class="s-total">$ 200.00</strong></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -339,11 +339,14 @@
 
 <script>
     function chkcartnum() {
-        var carty = localStorage.getItem('carts');
-        carty = JSON.parse(carty);
-        console.log(carty.length);
-        $('.badge').html(carty.length);
-        $('.cartnum').html(`( ${carty.length} Items )`)
+        let amount = 0;
+        JSON.parse(localStorage.getItem('carts')).map(data => {
+            amount = amount + data.amount;
+        });
+        // console.log(amount);
+        
+        $('.badge').html(amount);
+        $('.cartnum').html(`( ${amount} Items )`)
     }
     chkcartnum();
 

@@ -8,7 +8,8 @@ $(document).ready(function () {
             title: 'Runnable Shoes',
             price: 13.99,
             spec: 'Runnable Shoes Medium size Fashion and for Gym activites, very comfy for Runnuing.',
-            imageUrl: '../Images/pic15.png'
+            imageUrl: '../Images/pic15.png',
+            amount: 1
         },
         {
             id: 2,
@@ -16,7 +17,8 @@ $(document).ready(function () {
             title: 'Male Sneakers',
             price: 19.99,
             spec: 'Male Sneakeres Large Size Fashion Casual Formal Shoes-BLUE.',
-            imageUrl: '../Images/5.jpg'
+            imageUrl: '../Images/5.jpg',
+            amount: 1
         },
         {
             id: 3,
@@ -24,7 +26,8 @@ $(document).ready(function () {
             title: 'Student Backpack',
             price: 10.99,
             spec: 'Student Backpack Large Size Fashion Casual Formal Student bags, very comfy even with loads.',
-            imageUrl: '../Images/pic7.png'
+            imageUrl: '../Images/pic7.png',
+            amount: 1
         },
         {
             id: 4,
@@ -32,7 +35,8 @@ $(document).ready(function () {
             title: 'Iphone11 4/64GB',
             price: 750.99,
             spec: 'Iphone11 4/64GB White 64G_original-new-apple-i-phone-11-dual-12-mp-c_variants-3',
-            imageUrl: '../Images/iphone11s.jpg'
+            imageUrl: '../Images/iphone11s.jpg',
+            amount: 1
         },
         {
             id: 5,
@@ -40,7 +44,8 @@ $(document).ready(function () {
             title: 'Female Shoes',
             price: 199.99,
             spec: 'Female Shoes Medium Size Fashion Casual Formal Shoes-BLACK.',
-            imageUrl: '../Images/pic2.png'
+            imageUrl: '../Images/pic2.png',
+            amount: 1
         },
         {
             id: 6,
@@ -48,7 +53,8 @@ $(document).ready(function () {
             title: 'Smart Wrist Watch',
             price: 10.99,
             spec: 'Smart Wrist Watch Bluetooth GSM Phone For Android Samsung IPhone (white).',
-            imageUrl: '../Images/1.jpg'
+            imageUrl: '../Images/1.jpg',
+            amount: 1
         },
         {
             id: 7,
@@ -56,7 +62,8 @@ $(document).ready(function () {
             title: 'Sunlight Detergent',
             price: 5.99,
             spec: 'Sunlight 2in1 Spring Sensations Handwash Washing Powder 900g.',
-            imageUrl: '../Images/sunlight.jpg'
+            imageUrl: '../Images/sunlight.jpg',
+            amount: 1
         },
         {
             id: 8,
@@ -64,7 +71,8 @@ $(document).ready(function () {
             title: 'Apple MacBook Pro',
             price: 2999.99,
             spec: 'Apple MacBook Pro - 16" Touch Bar - Intel Core I9 - 16GB - AMD Radeon Pro 5500M - 1TB SSD - Space Gray.',
-            imageUrl: '../Images/applelappy.jpg'
+            imageUrl: '../Images/applelappy.jpg',
+            amount: 1
         },
     ];
 
@@ -170,7 +178,7 @@ $(document).ready(function () {
         })
         var carty = localStorage.getItem('carts');
         carty = JSON.parse(carty);
-        console.log(carty);
+        // console.log(carty);
 
         if (carty == null) {
             cart = [];
@@ -272,6 +280,7 @@ $(document).ready(function () {
         showandhidenocart();
         linkcarttoproductpage();
         calccart();
+        subtotalfn();
     })
 
     function getcartdetails() {
@@ -287,8 +296,8 @@ $(document).ready(function () {
             <td><img src=${items.imageUrl} class="img-fluid img-click" width="50px"> </td>
             <td colspan="2" class="title-click">${items.title}</td>
 
-            <td><input class="item-qty form-control w-50 mx-auto" type="number" value="1" min="1" /></td>
-            <td class="item-price text-right font-weight-bold">$ ${items.price * 1}</td>
+            <td><input class="item-qty form-control w-50 mx-auto" type="number" value=${items.amount} min="1" /></td>
+            <td class="item-price text-right font-weight-bold">$ ${items.price * items.amount}</td>
             <td class="text-right">
                 <button class="btn btn-sm btn-danger" id=${items.id}>
                     <i class="fa fa-trash"></i>
@@ -320,6 +329,8 @@ $(document).ready(function () {
             $(this).closest('tr').remove();
 
             showandhidenocart();
+            chkcartnum();
+            subtotalfn()
         })
     }
 
@@ -356,26 +367,63 @@ $(document).ready(function () {
 
     function calccart() {
 
-        var cartp = localStorage.getItem('carts');
-        cartp = JSON.parse(cartp);
-
-
         $(document).on('keyup , click', '.item-qty', function () {
+
+            var cartp = localStorage.getItem('carts');
+            cartp = JSON.parse(cartp);
 
             var prc = $(this).closest('tr').find('.item-qty').val();
             // console.log(prc);
 
             var tt = $(this).closest('tr').index();
-            var cp = prc * cartp[tt].price;
+            // var cp = prc * cartp[tt].price;
 
+            cartp[tt].amount = parseInt(prc);
+            var cp = cartp[tt].amount * cartp[tt].price;
+
+            // cartp[tt].price = parseFloat(cp);
             var ptotal = $(this).closest('tr').find('.item-price').html(`$ ${cp}`);
 
+            cartp = localStorage.setItem('carts', JSON.stringify(cartp));
+
+            chkcartnum();
+            subtotalfn();
         })
 
-
-
-
     }
+
+    function subtotalfn() {
+        var cartp = localStorage.getItem('carts');
+        cartp = JSON.parse(cartp);
+
+        var sur = 0;
+        for (items of cartp) {
+            var vd = items.amount * items.price;
+            sur += vd
+        }
+        console.log(sur);
+        var surn = sur.toFixed(2);
+        $('.sub-total').html(`$ ${surn}`);
+
+        var shipn = 5;
+        var stote = sur + 5;
+        stote = stote.toFixed(2);
+        // console.log(stote);
+        $('.s-total').html(`$ ${stote}`);
+    }
+
+    //function to update cart number
+    function chkcartnum() {
+        let amount = 0;
+        JSON.parse(localStorage.getItem('carts')).map(data => {
+            amount = amount + data.amount;
+        });
+        console.log(amount);
+
+        $('.badge').html(amount);
+        $('.cartnum').html(`( ${amount} Items )`)
+    }
+
 
 
 

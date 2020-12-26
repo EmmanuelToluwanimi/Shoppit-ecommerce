@@ -338,10 +338,14 @@
 
 <script>
     function chkcartnum() {
-        var carty = localStorage.getItem('carts');
-        carty = JSON.parse(carty);
-        console.log(carty.length);
-        $('.badge').html(carty.length);
+        let amount = 0;
+        JSON.parse(localStorage.getItem('carts')).map(data => {
+            amount = amount + data.amount;
+        });
+        // console.log(amount);
+
+        $('.badge').html(amount);
+
     }
     chkcartnum();
 

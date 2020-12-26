@@ -394,15 +394,18 @@
 <script src="../main.js"></script>
 
 <script>
+    
     function chkcartnum() {
-        var carty = localStorage.getItem('carts');
-        carty = JSON.parse(carty);
-        if (carty == null) {
-            console.log(0);
+        let amount = 0;
+        var caz = JSON.parse(localStorage.getItem('carts'));
+
+        if (caz == null) {
             $('.badge').html(0);
         } else {
-            console.log(carty.length);
-            $('.badge').html(carty.length);
+            caz.map(data => {
+                amount = amount + data.amount;
+            });
+            $('.badge').html(amount);
         }
     }
     chkcartnum();
