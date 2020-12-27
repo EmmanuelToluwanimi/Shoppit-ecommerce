@@ -174,7 +174,7 @@ $(document).ready(function () {
             carty = JSON.parse(carty);
             // console.log(carty.length);
             $('.cartnum').find('.badge').html(carty.length);
-
+            chkcartnum();
         })
         var carty = localStorage.getItem('carts');
         carty = JSON.parse(carty);
@@ -185,6 +185,7 @@ $(document).ready(function () {
         } else {
             cart = carty;
         }
+
     }
 
 
@@ -252,24 +253,32 @@ $(document).ready(function () {
         $('#productpage').find('.aa').html(dis);
     }
 
+    var sender = localStorage.getItem('xs');
+    sender = JSON.parse(sender);
+    var sendme = sender[0];
+
+    var carty = localStorage.getItem('carts');
+    carty = JSON.parse(carty);
+
     function productaddcart() {
         $('#productpage').find('.addcartbtd').click(function () {
-            // console.log('wprked');
-            var sender = localStorage.getItem('xs');
-            sender = JSON.parse(sender);
-            var sendme = sender[0];
 
-            var carty = localStorage.getItem('carts');
-            carty = JSON.parse(carty);
-            carty.push(sendme);
-            // console.log(carty);
+            let serc = carty.findIndex(serc => serc.title === sendme.title);
+            
+            if (serc == -1) {
+                carty.push(sendme);
+                // console.log(sendme.amount);
+            } else {
+                sendme.amount++;
+                carty[serc].amount++;
+            }
 
-            var carter = JSON.stringify(carty);
-            localStorage.setItem('carts', carter);
+            carty = localStorage.setItem('carts', JSON.stringify(carty));
+            location.reload();
 
             var cartp = localStorage.getItem('carts');
             cartp = JSON.parse(cartp);
-            $('.badge').html(cartp.length);
+            
         })
     }
 
@@ -286,8 +295,6 @@ $(document).ready(function () {
     function getcartdetails() {
         var cartp = localStorage.getItem('carts');
         cartp = JSON.parse(cartp);
-
-
 
         var spy = '';
         for (items of cartp) {
@@ -423,10 +430,6 @@ $(document).ready(function () {
         $('.badge').html(amount);
         $('.cartnum').html(`( ${amount} Items )`)
     }
-
-
-
-
 
 
 
