@@ -77,9 +77,14 @@ $(document).ready(function () {
     ];
 
     //variables
+    var users = [];
     var senderos = [];
-
     var cart = [];
+    var testing = [];
+
+    //users
+    // localStorage.setItem('UserInfo', JSON.stringify(users));
+    var profile = JSON.parse(localStorage.getItem('UserInfo'));
 
     //products sent to local storage
     var sproduct = JSON.stringify(products);
@@ -88,6 +93,44 @@ $(document).ready(function () {
     //getItems of products from l-storage
     var getProduct = localStorage.getItem('myProducts');
     var awaProduct = JSON.parse(getProduct);
+
+    //functions for SignUp page
+    $('#formpage').html(function () {
+        getData();
+    })
+
+    function getData() {
+        $('.btn1').on('click', function () {
+            var Signup = new profl(
+                $('.fullname').val(),
+                $('.username').val(),
+                $('.emailx').val(),
+                $('.passwordx').val()
+            );
+            // testing.push(Signup);
+            // console.log(testing);
+
+            if (profile == null) {
+                users.push(Signup);
+                localStorage.setItem('UserInfo', JSON.stringify(users));
+            } else {
+                profile.push(Signup);
+                localStorage.setItem('UserInfo', JSON.stringify(profile));
+            }
+            location.reload();
+            
+        })
+        console.log(profile);
+        
+    }
+
+    function profl(fullname, username, email, password) {
+        this.fullname = fullname;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
 
 
     //Products to display in body of Homepage.
@@ -211,6 +254,10 @@ $(document).ready(function () {
     })
 
     function productInfo() {
+        document.querySelector('.ee').addEventListener('click', function () {
+            window.location.href = "../Cart-page/index.html";
+        })
+
         var sender = localStorage.getItem('xs');
         sender = JSON.parse(sender);
         console.log(sender[0].title);
@@ -264,7 +311,7 @@ $(document).ready(function () {
         $('#productpage').find('.addcartbtd').click(function () {
 
             let serc = carty.findIndex(serc => serc.title === sendme.title);
-            
+
             if (serc == -1) {
                 carty.push(sendme);
                 // console.log(sendme.amount);
@@ -278,7 +325,7 @@ $(document).ready(function () {
 
             var cartp = localStorage.getItem('carts');
             cartp = JSON.parse(cartp);
-            
+
         })
     }
 

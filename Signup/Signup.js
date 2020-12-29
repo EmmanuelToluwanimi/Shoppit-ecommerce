@@ -29,7 +29,7 @@ $('.btn1').click(function (event) {
 
 })
 $('#signup').on('keyup', function () {
-    validate($(this));
+    // validate($(this));
 })
 function validate(action) {
     if (action.find('[placeholder="Fullname"]').focus()) {

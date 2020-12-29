@@ -94,6 +94,11 @@ header {
 #nav02 .nav2 {
     display: flex;
     flex-direction: column;
+    width: 100%;
+}
+#nav02 .nav2 div{
+    text-align: left;
+    width: 100%;
 }
 
 .bars {

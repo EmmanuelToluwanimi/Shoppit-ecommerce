@@ -37,20 +37,20 @@
             <div class="nav2">
                 <div>
                     <a href="#">Home</a>
-                    <div class="nav-items border">
+                    <!-- <div class="nav-items border">
                         <a href="">Material</a>
                         <a href="">Products</a>
                         <a href="">Contact us</a>
                         <a href="">Media</a>
-                    </div>
-                </div>
-
-                <div>
-                    <a href="#">Catalog</a>
+                    </div> -->
                 </div>
 
                 <div>
                     <a href="#">Shop <i class="fas fa-shopping-bag"></i></a>
+                </div>
+
+                <div>
+                    <a href="../Signup/index.html">Signup <i class="fa fa-user"></i></a>
                 </div>
 
                 <div>
@@ -62,7 +62,7 @@
         <nav class="navbar border-bottom shadow-sm" id="nav02">
             <div class="nav1">
                 <img src="../Images/Online-Shopping-Cart-PNG-Background-Image.png" alt="cart Images" width="50px">
-                <h2 class="ml-1 pt-1">Shoppit.</h2>
+                <h2 class="ml-1 pt-1"><a href="../Home-page/index.html">Shoppit.</a></h2>
             </div>
 
             <button class="btn" type="button" id="navbtn">
@@ -84,16 +84,16 @@
                     </div>
 
                     <div class="px-2 py-2">
-                        <a href="#">Catalog</a>
-                    </div>
-
-                    <div class="px-2 py-2">
                         <a href="#" class="d-flex align-items-center">Shop <i class="fas fa-shopping-bag ml-2"></i></a>
                     </div>
 
                     <div class="px-2 py-2">
+                        <a href="../Signup/index.html">Signup/Login <i class="fa fa-user"></i></a>
+                    </div>
+
+                    <div class="px-2 py-2">
                         <a href="#" class="d-flex align-items-center">Cart
-                            <span class="badge badge-primary">0</span>
+                            <span class="badge badge-primary ml-1">0</span>
                         </a>
                     </div>
                 </div>
@@ -168,8 +168,10 @@
                     <div class="col actionbtn mb-2">
                         <div class="row">
                             <div class="col-sm-12  col-md-6">
-                                <button class="shoppitbtn mt-2 btn btn-block btn-lg btn-primary">Continue
-                                    Shopping</button>
+                                <button class="shoppitbtn mt-2 btn btn-block btn-lg btn-primary">
+                                    <a href="../Home-page/index.html" class="text-white text-decoration-none">Continue
+                                        Shopping</a>
+                                </button>
                             </div>
                             <div class="col-sm-12 col-md-6 mt-2 text-right">
                                 <button
@@ -344,7 +346,7 @@
             amount = amount + data.amount;
         });
         // console.log(amount);
-        
+
         $('.badge').html(amount);
         $('.cartnum').html(`( ${amount} Items )`)
     }

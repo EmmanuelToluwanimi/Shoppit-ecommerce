@@ -92,7 +92,7 @@ header {
     background-size: cover;
     background-position: center;
     width: 100vw;
-    height: 85vh;
+    height: 95vh;
     background-repeat: no-repeat;
 }
 
@@ -101,8 +101,12 @@ header {
     background-size: cover;
     background-position: center;
     width: 100vw;
-    height: 85vh;
+    height: 95vh;
     background-repeat: no-repeat;
+}
+
+#c3 {
+    height: 95vh !important;
 }
 
 #c3 img {
@@ -140,6 +144,11 @@ header {
 #nav02 .nav2 {
     display: flex;
     flex-direction: column;
+    width: 100%;
+}
+#nav02 .nav2 div{
+    text-align: left;
+    width: 100%;
 }
 
 .bars {
@@ -173,10 +182,6 @@ header {
     background-color: #fff;
 }
 
-.step2 h3 {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-}
 
 .g-slide {
     display: flex;
@@ -325,7 +330,7 @@ header {
 
 @media screen and (max-width:800px) {
     #c1, #c2, #c3 {
-        height: 70vh;
+        height: 80vh !important;
     }
     .img2 {
         width: 50%;
