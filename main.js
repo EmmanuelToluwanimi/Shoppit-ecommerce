@@ -87,7 +87,7 @@ $(document).ready(function () {
     //users
     // localStorage.setItem('UserInfo', JSON.stringify(users));
     var profile = JSON.parse(localStorage.getItem('UserInfo'));
-    var onlyUser = JSON.parse(localStorage.getItem('UserInfo'));
+    var onlyUser = JSON.parse(localStorage.getItem('UserData'));
 
     //products sent to local storage
     var sproduct = JSON.stringify(products);
@@ -201,11 +201,36 @@ $(document).ready(function () {
         }, 2000);
     }
 
+    function navdom() {
+        // console.log(onlyUser);
+
+        if (onlyUser == null || onlyUser[0] == undefined) {
+            $('.usa1').removeClass('d-none');
+        } else {
+            var usa2 = `
+            <div class="dropdown">
+            <span>${onlyUser[0].username} <i class="fa fa-user"></i></span>
+            <div class="dropdown-content logout btn">
+                Log Out <i class="fas fa-sign-out-alt"></i>
+            </div>
+            </div>
+            `;
+            $('.usa1').after(usa2);
+        }
+
+        $('.logout').click(function () {
+            onlyUser = [];
+            localStorage.setItem('UserData', JSON.stringify(userdata));
+            window.location.href = "../signup/index.html";
+        })
+    }
+
     //Products to display in body of Homepage.
     $('#homepage').html(function () {
         displayproducts1();
         displayproducts2();
         homepageaddcart();
+        navdom();
     })
 
     function displayproducts1() {
@@ -319,6 +344,7 @@ $(document).ready(function () {
     $('#productpage').html(function () {
         productInfo();
         productaddcart();
+        navdom();
     })
 
     function productInfo() {
@@ -405,6 +431,7 @@ $(document).ready(function () {
         linkcarttoproductpage();
         calccart();
         subtotalfn();
+        navdom();
     })
 
     function getcartdetails() {
