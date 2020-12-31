@@ -92,6 +92,12 @@ i {
     form {
         width: 35%;
     }
+    .loadicn img{
+        position: absolute;
+        top: 40%;
+        left: 40%;
+        border-radius: 20px;
+    }
 }
 
 .form-label-group {
@@ -176,4 +182,21 @@ i {
     padding-bottom: .25rem;
     font-size: 12px;
     color: #777;
+}
+
+.loadicn{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    top: 0%;
+    left: 0%;
+    background: linear-gradient(rgb(0,0,0,0.7),rgb(0,0,0,0.7));
+    z-index: 2;
+    transition: 1s ease;
+}
+.loadicn img{
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    border-radius: 20px;
 }

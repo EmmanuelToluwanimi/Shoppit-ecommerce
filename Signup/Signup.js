@@ -24,7 +24,7 @@ function tabMenu(evt, tabName) {
     evt.currentTarget.className += 'active';
 }
 
-$('.btn1').click(function (event) {
+$('.btn1,.btn2').click(function (event) {
     event.preventDefault();
 
 })

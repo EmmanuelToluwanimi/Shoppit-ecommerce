@@ -80,11 +80,14 @@ $(document).ready(function () {
     var users = [];
     var senderos = [];
     var cart = [];
-    var testing = [];
+    var logindata = {};
+    var userdata = [];
+    var userprofile;
 
     //users
     // localStorage.setItem('UserInfo', JSON.stringify(users));
     var profile = JSON.parse(localStorage.getItem('UserInfo'));
+    var onlyUser = JSON.parse(localStorage.getItem('UserInfo'));
 
     //products sent to local storage
     var sproduct = JSON.stringify(products);
@@ -97,16 +100,27 @@ $(document).ready(function () {
     //functions for SignUp page
     $('#formpage').html(function () {
         getData();
+        login();
     })
 
     function getData() {
+        //signin part
         $('.btn1').on('click', function () {
-            var Signup = new profl(
-                $('.fullname').val(),
-                $('.username').val(),
-                $('.emailx').val(),
-                $('.passwordx').val()
-            );
+            if ($('.fullname').val() == '' || $('.username').val() == '' || $('.emailx').val() == '' || $('.passwordx').val() == '') {
+                $('.nospace').removeClass('d-none');
+                setTimeout(() => {
+                    $('.nospace').addClass('d-none');
+                }, 2000);
+                return
+            } else {
+                var Signup = new profl(
+                    $('.fullname').val(),
+                    $('.username').val(),
+                    $('.emailx').val(),
+                    $('.passwordx').val()
+                );
+            }
+
             // testing.push(Signup);
             // console.log(testing);
 
@@ -117,13 +131,17 @@ $(document).ready(function () {
                 profile.push(Signup);
                 localStorage.setItem('UserInfo', JSON.stringify(profile));
             }
-            location.reload();
-            
+            userprofile = profile[profile.length - 1];
+            userdata[0] = userprofile;
+            // console.log(userdata);
+            localStorage.setItem('UserData', JSON.stringify(userdata));
+            loadicon();
         })
         console.log(profile);
-        
+
     }
 
+    //function to create new object for users
     function profl(fullname, username, email, password) {
         this.fullname = fullname;
         this.username = username;
@@ -131,7 +149,57 @@ $(document).ready(function () {
         this.password = password;
     }
 
+    function login() {
+        //login
+        $('.btn2').on('click', function () {
+            var eml = $('.emaily').val();
+            var pwd = $('.passwordy').val();
 
+            if (eml == '' && pwd == '') {
+                $('.nospace').removeClass('d-none');
+                setTimeout(() => {
+                    $('.nospace').addClass('d-none');
+                }, 2000);
+                return
+            } else {
+                logindata.email = eml;
+                logindata.password = pwd;
+            }
+            // console.log(logindata);
+            if (profile == null) {
+                $('.alat').removeClass('d-none');
+                setTimeout(() => {
+                    $('.alat').addClass('d-none');
+                }, 2000);
+                return
+            } else {
+                userprofile = profile.find(userprofile => userprofile.email == logindata.email && userprofile.password == logindata.password);
+            }
+
+            // console.log(userprofile);
+            if (userprofile == undefined) {
+                $('.alat').removeClass('d-none');
+                setTimeout(() => {
+                    $('.alat').addClass('d-none');
+                }, 2000);
+                return
+            } else {
+                loadicon();
+            }
+            // console.log(userprofile);
+            userdata[0] = userprofile;
+            // console.log(userdata);
+            localStorage.setItem('UserData', JSON.stringify(userdata));
+        })
+    }
+
+    //loading icon function
+    function loadicon() {
+        $('.loadicn').removeClass('d-none');
+        setTimeout(() => {
+            window.location.href = "../home-page/index.html";
+        }, 2000);
+    }
 
     //Products to display in body of Homepage.
     $('#homepage').html(function () {
