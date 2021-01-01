@@ -321,22 +321,35 @@ $(document).ready(function () {
 
             } else {
                 profile[onlyUser[1]].userCart = cart;
-                // console.log(profile[onlyUser[1]]);
+                // console.log(profile[onlyUser[1]].userCart);
                 localStorage.setItem('UserInfo', JSON.stringify(profile));
+
+                // profile = JSON.parse(localStorage.getItem('UserInfo'));
+                // console.log(profile[onlyUser[1]].userCart.length);
+                // $('.badge').html(profile[onlyUser[1]].userCart.length);
             }
 
 
-            chkcartnum();
+            // chkcartnum(); 
         })
+
         var carty = localStorage.getItem('carts');
         carty = JSON.parse(carty);
-        // console.log(carty);
+        // console.log(cart);
 
-        if (carty == null) {
-            cart = [];
+        if (onlyUser == null || onlyUser[0] == undefined) {
+            if (carty == null) {
+                cart = [];
+            } else {
+                cart = carty;
+            }
         } else {
-            cart = carty;
+            cart = profile[onlyUser[1]].userCart;
         }
+        console.log(cart);
+        
+        // console.log(profile[onlyUser[1]].userCart);
+
 
     }
 
