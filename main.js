@@ -83,6 +83,8 @@ $(document).ready(function () {
     var logindata = {};
     var userdata = [];
     var userprofile;
+    var userIndex;
+    // var userCart;
 
     //users
     // localStorage.setItem('UserInfo', JSON.stringify(users));
@@ -174,6 +176,7 @@ $(document).ready(function () {
                 return
             } else {
                 userprofile = profile.find(userprofile => userprofile.email == logindata.email && userprofile.password == logindata.password);
+                userIndex = profile.findIndex(userprofile => userprofile.email == logindata.email && userprofile.password == logindata.password);
             }
 
             // console.log(userprofile);
@@ -188,6 +191,7 @@ $(document).ready(function () {
             }
             // console.log(userprofile);
             userdata[0] = userprofile;
+            userdata[1] = userIndex;
             // console.log(userdata);
             localStorage.setItem('UserData', JSON.stringify(userdata));
         })
@@ -201,6 +205,7 @@ $(document).ready(function () {
         }, 2000);
     }
 
+    //function to updata navbar if a user is logged in
     function navdom() {
         // console.log(onlyUser);
 
@@ -303,13 +308,24 @@ $(document).ready(function () {
             var carto = awaProduct[this.id - 1];
             cart.push(carto);
             console.log(cart);
-            var carter = JSON.stringify(cart);
-            localStorage.setItem('carts', carter);
 
-            var carty = localStorage.getItem('carts');
-            carty = JSON.parse(carty);
-            // console.log(carty.length);
-            $('.cartnum').find('.badge').html(carty.length);
+
+            if (onlyUser == null || onlyUser[0] == undefined) {
+                var carter = JSON.stringify(cart);
+                localStorage.setItem('carts', carter);
+
+                var carty = localStorage.getItem('carts');
+                carty = JSON.parse(carty);
+                // console.log(carty.length);
+                $('.cartnum').find('.badge').html(carty.length);
+
+            } else {
+                profile[onlyUser[1]].userCart = cart;
+                // console.log(profile[onlyUser[1]]);
+                localStorage.setItem('UserInfo', JSON.stringify(profile));
+            }
+
+
             chkcartnum();
         })
         var carty = localStorage.getItem('carts');
