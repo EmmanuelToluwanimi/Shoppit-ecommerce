@@ -324,14 +324,9 @@ $(document).ready(function () {
                 profile[onlyUser[1]].userCart = cart;
                 // console.log(profile[onlyUser[1]].userCart);
                 localStorage.setItem('UserInfo', JSON.stringify(profile));
-
-                // profile = JSON.parse(localStorage.getItem('UserInfo'));
-                // console.log(profile[onlyUser[1]].userCart.length);
-                // $('.badge').html(profile[onlyUser[1]].userCart.length);
             }
 
-
-            // chkcartnum(); 
+            chkcartnum();
         })
 
         var carty = localStorage.getItem('carts');
@@ -351,11 +346,8 @@ $(document).ready(function () {
             }
         }
 
-
-
-        console.log(cart.length);
-        // console.log(profile[onlyUser[1]].userCart);
-
+        // console.log(cart.length);
+        console.log(profile[onlyUser[1]].userCart);
 
     }
 
@@ -599,10 +591,17 @@ $(document).ready(function () {
     //function to update cart number
     function chkcartnum() {
         let amount = 0;
-        JSON.parse(localStorage.getItem('carts')).map(data => {
-            amount = amount + data.amount;
-        });
-        console.log(amount);
+
+        if (onlyUser == null || onlyUser[0] == undefined) {
+            JSON.parse(localStorage.getItem('carts')).map(data => {
+                amount = amount + data.amount;
+            });
+            // console.log(amount);
+        } else {
+            profile[onlyUser[1]].userCart.map(data => {
+                amount = amount + data.amount;
+            })
+        }
 
         $('.badge').html(amount);
         $('.cartnum').html(`( ${amount} Items )`)

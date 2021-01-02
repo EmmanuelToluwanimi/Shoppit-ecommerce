@@ -398,15 +398,28 @@
     function chkcartnum() {
         let amount = 0;
         var caz = JSON.parse(localStorage.getItem('carts'));
-
-        if (caz == null) {
-            $('.badge').html(0);
+        var profile = JSON.parse(localStorage.getItem('UserInfo'));
+        var onlyUser = JSON.parse(localStorage.getItem('UserData'));
+        if (onlyUser == null || onlyUser[0] == undefined) {
+            if (caz == null) {
+                $('.badge').html(0);
+            } else {
+                caz.map(data => {
+                    amount = amount + data.amount;
+                });
+                $('.badge').html(amount);
+            }
         } else {
-            caz.map(data => {
-                amount = amount + data.amount;
-            });
-            $('.badge').html(amount);
+            if (profile[onlyUser[1]].userCart == undefined) {
+                $('.badge').html(0);
+            } else {
+                profile[onlyUser[1]].userCart.map(data => {
+                    amount = amount + data.amount;
+                })
+                $('.badge').html(amount);
+            }
         }
+
     }
     chkcartnum();
 
