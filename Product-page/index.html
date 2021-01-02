@@ -55,7 +55,7 @@
                     <a href="../Signup/index.html">Signup <i class="fa fa-user"></i></a>
                 </div>
 
-                <div class="cartnum">
+                <div class="">
                     <a href="../Cart-page/index.html">Cart
                         <!-- <i class="fab fa-opencart"></i> -->
                         <span class="badge badge-primary">0</span>
@@ -340,13 +340,28 @@
 <script>
     function chkcartnum() {
         let amount = 0;
-        JSON.parse(localStorage.getItem('carts')).map(data => {
-            amount = amount + data.amount;
-        });
-        // console.log(amount);
-
-        $('.badge').html(amount);
-
+        var caz = JSON.parse(localStorage.getItem('carts'));
+        var profile = JSON.parse(localStorage.getItem('UserInfo'));
+        var onlyUser = JSON.parse(localStorage.getItem('UserData'));
+        if (onlyUser == null || onlyUser[0] == undefined) {
+            if (caz == null) {
+                $('.badge').html(0);
+            } else {
+                caz.map(data => {
+                    amount = amount + data.amount;
+                });
+                $('.badge').html(amount);
+            }
+        } else {
+            if (profile[onlyUser[1]].userCart == undefined) {
+                $('.badge').html(0);
+            } else {
+                profile[onlyUser[1]].userCart.map(data => {
+                    amount = amount + data.amount;
+                })
+                $('.badge').html(amount);
+            }
+        }
     }
     chkcartnum();
 

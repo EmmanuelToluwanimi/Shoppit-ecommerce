@@ -84,7 +84,7 @@ $(document).ready(function () {
     var userdata = [];
     var userprofile;
     var userIndex;
-    // var userCart;
+    var serc;
 
     //users
     // localStorage.setItem('UserInfo', JSON.stringify(users));
@@ -347,7 +347,7 @@ $(document).ready(function () {
         }
 
         // console.log(cart.length);
-        console.log(profile[onlyUser[1]].userCart);
+        // console.log(profile[onlyUser[1]].userCart);
 
     }
 
@@ -421,33 +421,56 @@ $(document).ready(function () {
         $('#productpage').find('.aa').html(dis);
     }
 
-    var sender = localStorage.getItem('xs');
-    sender = JSON.parse(sender);
-    var sendme = sender[0];
+
 
     var carty = localStorage.getItem('carts');
     carty = JSON.parse(carty);
 
     function productaddcart() {
+        var sender = localStorage.getItem('xs');
+        sender = JSON.parse(sender);
+        var sendme = sender[0];
+
         $('#productpage').find('.addcartbtd').click(function () {
+            if (onlyUser == null || onlyUser[0] == undefined) {
+                if (carty == null) {
+                    carty = [];
+                };
+                // console.log(carty);
+                serc = carty.findIndex(serc => serc.title === sendme.title);
 
-            let serc = carty.findIndex(serc => serc.title === sendme.title);
+                if (serc == -1) {
+                    carty.push(sendme);
+                    // console.log(sendme.amount);
+                } else {
+                    sendme.amount++;
+                    carty[serc].amount++;
+                }
 
-            if (serc == -1) {
-                carty.push(sendme);
-                // console.log(sendme.amount);
+                carty = localStorage.setItem('carts', JSON.stringify(carty));
+                location.reload();
+
+                var cartp = localStorage.getItem('carts');
+                cartp = JSON.parse(cartp);
+
             } else {
-                sendme.amount++;
-                carty[serc].amount++;
+                serc = profile[onlyUser[1]].userCart.findIndex(serc => serc.title === sendme.title);
+                // console.log(serc);
+                if (serc == -1) {
+                    profile[onlyUser[1]].userCart.push(sendme);
+                } else {
+                    // sendme.amount++;
+                    profile[onlyUser[1]].userCart[serc].amount++;
+                }
+                // console.log(profile[onlyUser[1]].userCart);
+                localStorage.setItem('UserInfo', JSON.stringify(profile));
+
             }
-
-            carty = localStorage.setItem('carts', JSON.stringify(carty));
-            location.reload();
-
-            var cartp = localStorage.getItem('carts');
-            cartp = JSON.parse(cartp);
-
+            chkcartnum();
         })
+        // console.log(profile[onlyUser[1]].userCart);
+        // console.log(carty);
+
     }
 
     //Functions for cartpage.
@@ -464,16 +487,21 @@ $(document).ready(function () {
     function getcartdetails() {
         var cartp = localStorage.getItem('carts');
         cartp = JSON.parse(cartp);
-
         var spy = '';
-        for (items of cartp) {
-            spy += `
+
+        if (cartp == null) {
+            cartp = cart;
+        } else {
+            for (items of cartp) {
+                var cpt = items.price * items.amount;
+                cpt = cpt.toFixed(2);
+                spy += `
             <tr>
             <td><img src=${items.imageUrl} class="img-fluid img-click" width="50px"> </td>
             <td colspan="2" class="title-click">${items.title}</td>
 
             <td><input class="item-qty form-control w-50 mx-auto" type="number" value=${items.amount} min="1" /></td>
-            <td class="item-price text-right font-weight-bold">$ ${items.price * items.amount}</td>
+            <td class="item-price text-right font-weight-bold">$ ${cpt}</td>
             <td class="text-right">
                 <button class="btn btn-sm btn-danger" id=${items.id}>
                     <i class="fa fa-trash"></i>
@@ -482,8 +510,9 @@ $(document).ready(function () {
             </tr>            
             `;
 
+            }
+            $('#cartpage').find('tbody').prepend(spy);
         }
-        $('#cartpage').find('tbody').prepend(spy);
 
         // var wg = $('.item-qty').val();
         // console.log(wg);
@@ -515,12 +544,23 @@ $(document).ready(function () {
         cartp = JSON.parse(cartp);
         // console.log(cartp);
 
-        if (cartp.length == 0) {
-            $('.nocart').show();
-            $('.cartlog').hide();
+        if (cartp == null) {
+            cartp = cart;
+            if (cartp.length == 0) {
+                $('.nocart').show();
+                $('.cartlog').hide();
+            } else {
+                $('.cartlog').show();
+                $('.nocart').hide();
+            }
         } else {
-            $('.cartlog').show();
-            $('.nocart').hide();
+            if (cartp.length == 0) {
+                $('.nocart').show();
+                $('.cartlog').hide();
+            } else {
+                $('.cartlog').show();
+                $('.nocart').hide();
+            }
         }
     }
 
@@ -556,6 +596,7 @@ $(document).ready(function () {
 
             cartp[tt].amount = parseInt(prc);
             var cp = cartp[tt].amount * cartp[tt].price;
+            cp = cp.toFixed(2)
 
             // cartp[tt].price = parseFloat(cp);
             var ptotal = $(this).closest('tr').find('.item-price').html(`$ ${cp}`);
@@ -572,20 +613,24 @@ $(document).ready(function () {
         var cartp = localStorage.getItem('carts');
         cartp = JSON.parse(cartp);
 
-        var sur = 0;
-        for (items of cartp) {
-            var vd = items.amount * items.price;
-            sur += vd
-        }
-        console.log(sur);
-        var surn = sur.toFixed(2);
-        $('.sub-total').html(`$ ${surn}`);
+        if (cartp == null) {
+            return
+        } else {
+            var sur = 0;
+            for (items of cartp) {
+                var vd = items.amount * items.price;
+                sur += vd
+            }
+            console.log(sur);
+            var surn = sur.toFixed(2);
+            $('.sub-total').html(`$ ${surn}`);
 
-        var shipn = 5;
-        var stote = sur + 5;
-        stote = stote.toFixed(2);
-        // console.log(stote);
-        $('.s-total').html(`$ ${stote}`);
+            var shipn = 5;
+            var stote = sur + 5;
+            stote = stote.toFixed(2);
+            // console.log(stote);
+            $('.s-total').html(`$ ${stote}`);
+        }
     }
 
     //function to update cart number
