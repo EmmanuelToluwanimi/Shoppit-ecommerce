@@ -85,6 +85,7 @@ $(document).ready(function () {
     var userprofile;
     var userIndex;
     var serc;
+    var spy = '';
 
     //users
     // localStorage.setItem('UserInfo', JSON.stringify(users));
@@ -139,9 +140,9 @@ $(document).ready(function () {
                 userprofile = profile[profile.length - 1];
                 userdata[1] = profile.length - 1;
             }
-            
+
             userdata[0] = userprofile;
-            
+
             // console.log(userdata);
             localStorage.setItem('UserData', JSON.stringify(userdata));
             loadicon();
@@ -491,37 +492,61 @@ $(document).ready(function () {
     })
 
     function getcartdetails() {
-        var cartp = localStorage.getItem('carts');
-        cartp = JSON.parse(cartp);
-        var spy = '';
+        if (onlyUser == null || onlyUser[0] == undefined) {
+            var cartp = localStorage.getItem('carts');
+            cartp = JSON.parse(cartp);
 
-        if (cartp == null) {
-            cartp = cart;
+            if (cartp == null) {
+                cartp = cart;
+            } else {
+                for (items of cartp) {
+                    var cpt = items.price * items.amount;
+                    cpt = cpt.toFixed(2);
+                    spy += `
+                    <tr>
+                    <td><img src=${items.imageUrl} class="img-fluid img-click" width="50px"> </td>
+                    <td colspan="2" class="title-click">${items.title}</td>
+
+                    <td><input class="item-qty form-control w-50 mx-auto" type="number" value=${items.amount} min="1" /></td>
+                    <td class="item-price text-right font-weight-bold">$ ${cpt}</td>
+                    <td class="text-right">
+                        <button class="btn btn-sm btn-danger" id=${items.id}>
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                    </tr>            
+                    `;
+
+                }
+                $('#cartpage').find('tbody').prepend(spy);
+            }
         } else {
-            for (items of cartp) {
+            // console.log(profile[onlyUser[1]].userCart);
+
+            for (items of profile[onlyUser[1]].userCart) {
+                console.log(items);
+
                 var cpt = items.price * items.amount;
                 cpt = cpt.toFixed(2);
                 spy += `
-            <tr>
-            <td><img src=${items.imageUrl} class="img-fluid img-click" width="50px"> </td>
-            <td colspan="2" class="title-click">${items.title}</td>
+                <tr>
+                <td><img src=${items.imageUrl} class="img-fluid img-click" width="50px"> </td>
+                <td colspan="2" class="title-click">${items.title}</td>
 
-            <td><input class="item-qty form-control w-50 mx-auto" type="number" value=${items.amount} min="1" /></td>
-            <td class="item-price text-right font-weight-bold">$ ${cpt}</td>
-            <td class="text-right">
-                <button class="btn btn-sm btn-danger" id=${items.id}>
-                    <i class="fa fa-trash"></i>
-                </button>
-            </td>
-            </tr>            
-            `;
+                <td><input class="item-qty form-control w-50 mx-auto" type="number" value=${items.amount} min="1" /></td>
+                <td class="item-price text-right font-weight-bold">$ ${cpt}</td>
+                <td class="text-right">
+                    <button class="btn btn-sm btn-danger" id=${items.id}>
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </td>
+                </tr>            
+                `;
 
             }
             $('#cartpage').find('tbody').prepend(spy);
-        }
 
-        // var wg = $('.item-qty').val();
-        // console.log(wg);
+        }
 
     }
 
@@ -546,21 +571,31 @@ $(document).ready(function () {
     }
 
     function showandhidenocart() {
-        var cartp = localStorage.getItem('carts');
-        cartp = JSON.parse(cartp);
-        // console.log(cartp);
+        if (onlyUser == null || onlyUser[0] == undefined) {
+            var cartp = localStorage.getItem('carts');
+            cartp = JSON.parse(cartp);
+            // console.log(cartp);
 
-        if (cartp == null) {
-            cartp = cart;
-            if (cartp.length == 0) {
-                $('.nocart').show();
-                $('.cartlog').hide();
+            if (cartp == null) {
+                cartp = cart;
+                if (cartp.length == 0) {
+                    $('.nocart').show();
+                    $('.cartlog').hide();
+                } else {
+                    $('.cartlog').show();
+                    $('.nocart').hide();
+                }
             } else {
-                $('.cartlog').show();
-                $('.nocart').hide();
+                if (cartp.length == 0) {
+                    $('.nocart').show();
+                    $('.cartlog').hide();
+                } else {
+                    $('.cartlog').show();
+                    $('.nocart').hide();
+                }
             }
         } else {
-            if (cartp.length == 0) {
+            if (profile[onlyUser[1]].userCart.length == 0) {
                 $('.nocart').show();
                 $('.cartlog').hide();
             } else {
@@ -591,23 +626,40 @@ $(document).ready(function () {
 
         $(document).on('keyup , click', '.item-qty', function () {
 
-            var cartp = localStorage.getItem('carts');
-            cartp = JSON.parse(cartp);
+            if (onlyUser == null || onlyUser[0] == undefined) {
+                var cartp = localStorage.getItem('carts');
+                cartp = JSON.parse(cartp);
 
-            var prc = $(this).closest('tr').find('.item-qty').val();
-            // console.log(prc);
+                var prc = $(this).closest('tr').find('.item-qty').val();
+                // console.log(prc);
 
-            var tt = $(this).closest('tr').index();
-            // var cp = prc * cartp[tt].price;
+                var tt = $(this).closest('tr').index();
+                // var cp = prc * cartp[tt].price;
 
-            cartp[tt].amount = parseInt(prc);
-            var cp = cartp[tt].amount * cartp[tt].price;
-            cp = cp.toFixed(2)
+                cartp[tt].amount = parseInt(prc);
+                var cp = cartp[tt].amount * cartp[tt].price;
+                cp = cp.toFixed(2)
 
-            // cartp[tt].price = parseFloat(cp);
-            var ptotal = $(this).closest('tr').find('.item-price').html(`$ ${cp}`);
+                // cartp[tt].price = parseFloat(cp);
+                var ptotal = $(this).closest('tr').find('.item-price').html(`$ ${cp}`);
 
-            cartp = localStorage.setItem('carts', JSON.stringify(cartp));
+                cartp = localStorage.setItem('carts', JSON.stringify(cartp));
+            } else {
+                var prc = $(this).closest('tr').find('.item-qty').val();
+                // console.log(prc);
+
+                var tt = $(this).closest('tr').index();
+                // var cp = prc * cartp[tt].price;
+
+                profile[onlyUser[1]].userCart[tt].amount = parseInt(prc);
+                var cp = profile[onlyUser[1]].userCart[tt].amount * profile[onlyUser[1]].userCart[tt].price;
+                cp = cp.toFixed(2)
+
+                // cartp[tt].price = parseFloat(cp);
+                var ptotal = $(this).closest('tr').find('.item-price').html(`$ ${cp}`);
+
+                localStorage.setItem('UserInfo', JSON.stringify(profile));
+            }
 
             chkcartnum();
             subtotalfn();
@@ -616,14 +668,31 @@ $(document).ready(function () {
     }
 
     function subtotalfn() {
-        var cartp = localStorage.getItem('carts');
-        cartp = JSON.parse(cartp);
+        if (onlyUser == null || onlyUser[0] == undefined) {
+            var cartp = localStorage.getItem('carts');
+            cartp = JSON.parse(cartp);
 
-        if (cartp == null) {
-            return
+            if (cartp == null) {
+                return
+            } else {
+                var sur = 0;
+                for (items of cartp) {
+                    var vd = items.amount * items.price;
+                    sur += vd
+                }
+                console.log(sur);
+                var surn = sur.toFixed(2);
+                $('.sub-total').html(`$ ${surn}`);
+
+                var shipn = 5;
+                var stote = sur + 5;
+                stote = stote.toFixed(2);
+                // console.log(stote);
+                $('.s-total').html(`$ ${stote}`);
+            }
         } else {
             var sur = 0;
-            for (items of cartp) {
+            for (items of profile[onlyUser[1]].userCart) {
                 var vd = items.amount * items.price;
                 sur += vd
             }
