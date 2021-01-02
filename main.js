@@ -556,13 +556,20 @@ $(document).ready(function () {
             let z = $(this).closest('tr').index();
             // console.log(z);
 
-            var cartp = localStorage.getItem('carts');
-            cartp = JSON.parse(cartp);
+            if (onlyUser == null || onlyUser[0] == undefined) {
+                var cartp = localStorage.getItem('carts');
+                cartp = JSON.parse(cartp);
 
-            cartp.splice(z, 1);
-            cartp = localStorage.setItem('carts', JSON.stringify(cartp));
+                cartp.splice(z, 1);
+                cartp = localStorage.setItem('carts', JSON.stringify(cartp));
 
-            $(this).closest('tr').remove();
+                $(this).closest('tr').remove();
+            } else {
+                profile[onlyUser[1]].userCart.splice(z, 1);
+                localStorage.setItem('UserInfo', JSON.stringify(profile));
+
+                $(this).closest('tr').remove();
+            }
 
             showandhidenocart();
             chkcartnum();
