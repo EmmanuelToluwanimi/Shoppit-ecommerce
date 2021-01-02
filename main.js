@@ -135,11 +135,12 @@ $(document).ready(function () {
             }
             userprofile = profile[profile.length - 1];
             userdata[0] = userprofile;
+            userdata[1] = profile.length - 1;
             // console.log(userdata);
             localStorage.setItem('UserData', JSON.stringify(userdata));
             loadicon();
         })
-        console.log(profile);
+        console.log(profile.length);
 
     }
 
@@ -345,9 +346,14 @@ $(document).ready(function () {
             }
         } else {
             cart = profile[onlyUser[1]].userCart;
+            if (profile[onlyUser[1]].userCart == undefined) {
+                cart = [];
+            }
         }
-        console.log(cart);
-        
+
+
+
+        console.log(cart.length);
         // console.log(profile[onlyUser[1]].userCart);
 
 
