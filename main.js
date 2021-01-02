@@ -614,13 +614,17 @@ $(document).ready(function () {
 
     function linkcarttoproductpage() {
         $(document).on('click', '.title-click , .img-click', function () {
-            var cartp = localStorage.getItem('carts');
-            cartp = JSON.parse(cartp);
+            var q = $(this).closest('tr').index();
 
-            let q = $(this).closest('tr').index();
+            if (onlyUser == null || onlyUser[0] == undefined) {
+                var cartp = localStorage.getItem('carts');
+                cartp = JSON.parse(cartp);
 
-            senderos[0] = cartp[q];
-            // console.log(senderos[0]);
+                senderos[0] = cartp[q];
+                // console.log(senderos[0]);
+            } else {
+                senderos[0] = profile[onlyUser[1]].userCart[q];
+            }
 
             var sender = JSON.stringify(senderos);
             localStorage.setItem('xs', sender);
