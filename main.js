@@ -129,18 +129,24 @@ $(document).ready(function () {
             if (profile == null) {
                 users.push(Signup);
                 localStorage.setItem('UserInfo', JSON.stringify(users));
+
+                userprofile = users[users.length - 1];
+                userdata[1] = users.length - 1;
             } else {
                 profile.push(Signup);
                 localStorage.setItem('UserInfo', JSON.stringify(profile));
+
+                userprofile = profile[profile.length - 1];
+                userdata[1] = profile.length - 1;
             }
-            userprofile = profile[profile.length - 1];
+            
             userdata[0] = userprofile;
-            userdata[1] = profile.length - 1;
+            
             // console.log(userdata);
             localStorage.setItem('UserData', JSON.stringify(userdata));
             loadicon();
         })
-        console.log(profile.length);
+        // console.log(profile.length);
 
     }
 
