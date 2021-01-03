@@ -54,7 +54,7 @@
                 </div>
 
                 <div>
-                    <a href="#">Cart <span class="badge badge-primary">0</span></a>
+                    <a href="../Cart-page/index.html">Cart <span class="badge badge-primary">0</span></a>
                 </div>
             </div>
         </nav>
@@ -92,7 +92,7 @@
                     </div>
 
                     <div class="px-2 py-2">
-                        <a href="#" class="d-flex align-items-center">Cart
+                        <a href="../Cart-page/index.html" class="d-flex align-items-center">Cart
                             <span class="badge badge-primary ml-1">0</span>
                         </a>
                     </div>
@@ -114,8 +114,8 @@
 
             <div class="jumbotron nocart text-center text-muted">
                 <h1>Your cart is emtpy</h1>
-                <button class="btn btn-lg btn-primary">
-                    <a href="../Home-page/index.html" class="text-white text-decoration-none">Continue Shopping</a>
+                <button class="btn btn-lg btn-primary contbtn">
+                    Continue Shopping
                 </button>
             </div>
 
@@ -168,9 +168,8 @@
                     <div class="col actionbtn mb-2">
                         <div class="row">
                             <div class="col-sm-12  col-md-6">
-                                <button class="shoppitbtn mt-2 btn btn-block btn-lg btn-primary">
-                                    <a href="../Home-page/index.html" class="text-white text-decoration-none">Continue
-                                        Shopping</a>
+                                <button class="shoppitbtn contbtn mt-2 btn btn-block btn-lg btn-primary">
+                                    Continue Shopping
                                 </button>
                             </div>
                             <div class="col-sm-12 col-md-6 mt-2 text-right">
@@ -353,6 +352,7 @@
                     amount = amount + data.amount;
                 });
                 $('.badge').html(amount);
+                $('.cartnum').html(`( ${amount} Items )`);
             }
         } else {
             if (profile[onlyUser[1]].userCart == undefined) {
@@ -362,6 +362,7 @@
                     amount = amount + data.amount;
                 })
                 $('.badge').html(amount);
+                $('.cartnum').html(`( ${amount} Items )`);
             }
         }
     }

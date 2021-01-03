@@ -489,6 +489,8 @@ $(document).ready(function () {
         calccart();
         subtotalfn();
         navdom();
+        continueshoppingbtn();
+        checkoutbtn();
     })
 
     function getcartdetails() {
@@ -735,10 +737,133 @@ $(document).ready(function () {
         }
 
         $('.badge').html(amount);
-        $('.cartnum').html(`( ${amount} Items )`)
+        $('.cartnum').html(`( ${amount} Items )`);
     }
 
+    //function for btn to redirect to homepage
+    function continueshoppingbtn() {
+        $('.contbtn').click(function () {
+            window.location.href = "../home-page/index.html";
+        })
+    }
 
+    // function for checkout btn
+    function checkoutbtn() {
+        $('.checkoutbtn').click(function () {
+            if (onlyUser == null || onlyUser[0] == undefined) {
+
+
+            } else {
+                window.location.href = "../checkout-page/index.html";
+            }
+        })
+    }
+
+    //function for checkout page
+    $('#checkoutpage').html(function () {
+        displayuserinfo();
+        displayusercart();
+        validatecardinput();
+        navdom();
+        payment();
+    })
+
+    function displayuserinfo() {
+        console.log(profile[onlyUser[1]]);
+        $('#fullName').val(profile[onlyUser[1]].fullname);
+        $('#username').val(profile[onlyUser[1]].username);
+        $('#email').val(profile[onlyUser[1]].email);
+
+        $('#address').val(profile[onlyUser[1]].address);
+        $('#country').val(profile[onlyUser[1]].country);
+        $('#state').val(profile[onlyUser[1]].state);
+        $('#cc-name').val(profile[onlyUser[1]].cardinfo.cardname);
+        $('#cc-number').val(profile[onlyUser[1]].cardinfo.cardnumber);
+        // $('#cc-expiration').val(profile[onlyUser[1]].expirydate);
+        // $('#cardcode').val(profile[onlyUser[1]].cardcode);
+
+
+    }
+
+    function displayusercart() {
+        var sup = 0;
+        for (items of profile[onlyUser[1]].userCart) {
+            var cp = items.amount * items.price;
+
+            sup += cp;
+            cp = cp.toFixed(2);
+
+            spy += `
+            <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+                <h6 class="my-0">${items.title}</h6>
+                <small class="text-muted">${items.amount} product(s)</small>
+            </div>
+            <span class="text-muted">$ ${cp}</span>
+            </li>
+            `;
+        }
+        sup = parseFloat(sup.toFixed(2)) + 5;
+        // console.log(sup);
+
+        $('.shipu').before(spy);
+        $('.total').html(`$ ${sup}`);
+    }
+
+    //function to validate cardinputs
+    function validatecardinput() {
+        $(function ($) {
+            $('[data-numeric]').payment('restrictNumeric');
+            $('.cc-number').payment('formatCardNumber');
+            $('.cc-exp').payment('formatCardExpiry');
+            $('.cc-cvc').payment('formatCardCVC');
+            $.fn.toggleInputError = function (erred) {
+                this.parent('.form-group').toggleClass('has-error', erred);
+                return this;
+            };
+            $('form').submit(function (e) {
+                e.preventDefault();
+                var cardType = $.payment.cardType($('.cc-number').val());
+                $('.cc-number').toggleInputError(!$.payment.validateCardNumber($('.cc-number').val()));
+                $('.cc-exp').toggleInputError(!$.payment.validateCardExpiry($('.cc-exp').payment('cardExpiryVal')));
+                $('.cc-cvc').toggleInputError(!$.payment.validateCardCVC($('.cc-cvc').val(), cardType));
+                $('.cc-brand').text(cardType);
+                $('.validation').removeClass('text-danger text-success');
+                $('.validation').addClass($('.has-error').length ? 'text-danger' : 'text-success');
+            });
+        });
+    }
+
+    //function to finalise payment and add other details
+    function payment() {
+        $('.paybtn').click(function () {
+            // console.log(profile[onlyUser[1]]);
+
+            if (profile[onlyUser[1]].address == undefined) {
+                profile[onlyUser[1]].address = $('#address').val();
+                profile[onlyUser[1]].country = $('#country').val();
+                profile[onlyUser[1]].state = $('#state').val();
+                profile[onlyUser[1]].cardinfo = {
+                    cardname: $('#cc-name').val(),
+                    cardnumber: $('#cc-number').val(),
+                    expirydate: $('#cc-expiration').val(),
+                    cardcode: $('#cc-cvv').val(),
+                };
+
+                localStorage.setItem('UserInfo', JSON.stringify(profile));
+
+            } else {
+                if (profile[onlyUser[1]].cardinfo.expirydate == $('#cc-expiration').val() && profile[onlyUser[1]].cardinfo.cardcode == $('#cc-cvv').val()) {
+                    console.log('correct');
+                    
+                } else {
+                    console.log('incorrect');
+                    
+                }
+
+            }
+        })
+    }
 
 
 

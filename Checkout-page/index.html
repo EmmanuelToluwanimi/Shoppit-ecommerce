@@ -22,11 +22,11 @@
 </head>
 
 <body id="checkoutpage">
-    <header>
+    <header class="mb-0">
         <nav class="navbar border-bottom shadow-sm" id="nav01">
             <div class="nav1">
                 <img src="../Images/Online-Shopping-Cart-PNG-Background-Image.png" alt="cart Images" width="50px">
-                <h2 class="ml-1 pt-1">Shoppit.</h2>
+                <h2 class="ml-1 pt-1"><a href="../Home-page/index.html">Shoppit.</a></h2>
             </div>
 
             <div class="nav3 border">
@@ -37,24 +37,24 @@
             <div class="nav2">
                 <div>
                     <a href="#">Home</a>
-                    <div class="nav-items border">
+                    <!-- <div class="nav-items border">
                         <a href="">Material</a>
                         <a href="">Products</a>
                         <a href="">Contact us</a>
                         <a href="">Media</a>
-                    </div>
-                </div>
-
-                <div>
-                    <a href="#">Catalog</a>
+                    </div> -->
                 </div>
 
                 <div>
                     <a href="#">Shop <i class="fas fa-shopping-bag"></i></a>
                 </div>
 
+                <div class="usa1 d-none">
+                    <a href="../Signup/index.html">Signup <i class="fa fa-user"></i></a>
+                </div>
+
                 <div>
-                    <a href="#">Cart <i class="fab fa-opencart"></i></a>
+                    <a href="../Cart-page/index.html">Cart <span class="badge badge-primary">0</span></a>
                 </div>
             </div>
         </nav>
@@ -62,7 +62,7 @@
         <nav class="navbar border-bottom shadow-sm" id="nav02">
             <div class="nav1">
                 <img src="../Images/Online-Shopping-Cart-PNG-Background-Image.png" alt="cart Images" width="50px">
-                <h2 class="ml-1 pt-1">Shoppit.</h2>
+                <h2 class="ml-1 pt-1"><a href="../Home-page/index.html">Shoppit.</a></h2>
             </div>
 
             <button class="btn" type="button" id="navbtn">
@@ -75,16 +75,12 @@
                 <div class="nav2">
                     <div class="px-2 py-2">
                         <a href="#">Home</a>
-                        <div class="nav-items border">
+                        <!-- <div class="nav-items border">
                             <a href="">Material</a>
                             <a href="">Products</a>
                             <a href="">Contact us</a>
                             <a href="">Media</a>
-                        </div>
-                    </div>
-
-                    <div class="px-2 py-2">
-                        <a href="#">Catalog</a>
+                        </div> -->
                     </div>
 
                     <div class="px-2 py-2">
@@ -92,7 +88,13 @@
                     </div>
 
                     <div class="px-2 py-2">
-                        <a href="#" class="d-flex align-items-center">Cart <i class="fab fa-opencart ml-2"></i></a>
+                        <a href="../Signup/index.html">Signup/Login <i class="fa fa-user"></i></a>
+                    </div>
+
+                    <div class="px-2 py-2">
+                        <a href="../Cart-page/index.html" class="d-flex align-items-center">Cart
+                            <span class="badge badge-primary ml-1">0</span>
+                        </a>
                     </div>
                 </div>
                 <div class="nav3 w-75 border">
@@ -120,31 +122,18 @@
                     </h4>
 
                     <ul class="list-group mb-3">
-                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+
+                        <li class="shipu list-group-item d-flex justify-content-between lh-condensed">
                             <div>
-                                <h6 class="my-0">Product name</h6>
-                                <small class="text-muted">Brief description</small>
-                            </div>
-                            <span class="text-muted">$12</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between lh-condensed">
-                            <div>
-                                <h6 class="my-0">Second product</h6>
-                                <small class="text-muted">Brief description</small>
-                            </div>
-                            <span class="text-muted">$8</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between lh-condensed">
-                            <div>
-                                <h6 class="my-0">Third item</h6>
-                                <small class="text-muted">Brief description</small>
+                                <h6 class="my-0">Shipping</h6>
+                                <small class="text-muted">Shipping fee</small>
                             </div>
                             <span class="text-muted">$5</span>
                         </li>
 
                         <li class="list-group-item d-flex justify-content-between">
                             <span>Total (USD)</span>
-                            <strong>$20</strong>
+                            <strong class="total">$20</strong>
                         </li>
                     </ul>
                 </div>
@@ -191,20 +180,14 @@
                         <div class="row">
                             <div class="col-md-5 mb-3">
                                 <label for="country">Country</label>
-                                <select class="custom-select d-block w-100" id="country" required>
-                                    <option value="">Choose...</option>
-                                    <option>United States</option>
-                                </select>
+                                <input type="text" class="form-control" id="country" placeholder="country name" required>
                                 <!-- <div class="invalid-feedback">
                                     Please select a valid country.
                                 </div> -->
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="state">State</label>
-                                <select class="custom-select d-block w-100" id="state" required>
-                                    <option value="">Choose...</option>
-                                    <option>California</option>
-                                </select>
+                                <input type="text" class="form-control" id="state" placeholder="state" required>
                                 <!-- <div class="invalid-feedback">
                                     Please provide a valid state.
                                 </div> -->
@@ -221,7 +204,12 @@
                         </div> -->
                         <hr class="mb-4">
 
-                        <h4 class="mb-3">Payment</h4>
+                        <div class="d-flex">
+                            <h4 class="mb-3">Payment</h4>
+                            <div class="col-md-6"> <img src="https://img.icons8.com/color/36/000000/visa.png"> <img
+                                    src="https://img.icons8.com/color/36/000000/mastercard.png"> <img
+                                    src="https://img.icons8.com/color/36/000000/amex.png"> </div>
+                        </div>
 
                         <div class="row">
                             <div class="col-md-6 mb-3">
@@ -234,7 +222,8 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="cc-number">Credit card number</label>
-                                <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                                <input type="tel" class="form-control cc-number" id="cc-number"
+                                    placeholder="XXXX XXXX XXXX XXXX" required>
                                 <div class="invalid-feedback">
                                     Credit card number is required
                                 </div>
@@ -243,25 +232,71 @@
                         <div class="row">
                             <div class="col-md-3 mb-3">
                                 <label for="cc-expiration">Expiration</label>
-                                <input type="text" class="form-control" id="cc-expiration" placeholder="XX / XX"
+                                <input type="tel" class="form-control cc-exp" id="cc-expiration" placeholder="XX / XX"
                                     required>
-                                <div class="invalid-feedback">
+                                <!-- <div class="invalid-feedback">
                                     Expiration date required
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="cc-cvv">CVV</label>
-                                <input type="text" class="form-control" id="cc-cvv" placeholder="XXX" required>
-                                <div class="invalid-feedback">
+                                <input type="password" class="form-control cc-cvc" id="cc-cvv" placeholder="XXX"
+                                    required>
+                                <!-- <div class="invalid-feedback">
                                     Security code required
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <hr class="mb-4">
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+                        <button class="paybtn btn btn-primary btn-lg btn-block w-50 type="submit">Make Payment</button>
                     </form>
                 </div>
             </div>
+
+            <!-- <div class="padding">
+                <div class="row">
+                    <div class="container-fluid d-flex justify-content-center">
+                        <div class="col-sm-8 col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="row">
+                                        <div class="col-md-6"> <span>CREDIT/DEBIT CARD PAYMENT</span> </div>
+                                        <div class="col-md-6 text-right" style="margin-top: -5px;"> <img
+                                                src="https://img.icons8.com/color/36/000000/visa.png"> <img
+                                                src="https://img.icons8.com/color/36/000000/mastercard.png"> <img
+                                                src="https://img.icons8.com/color/36/000000/amex.png"> </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group"> <label for="cc-number" class="control-label">CARD
+                                            NUMBER</label> <input id="cc-number" type="tel"
+                                            class="input-lg form-control cc-number" autocomplete="cc-number"
+                                            placeholder="•••• •••• •••• ••••" required> </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group"> <label for="cc-exp" class="control-label">CARD
+                                                    EXPIRY</label> <input id="cc-exp" type="tel"
+                                                    class="input-lg form-control cc-exp" autocomplete="cc-exp"
+                                                    placeholder="•• / ••" required> </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group"> <label for="cc-cvc" class="control-label">CARD
+                                                    CVC</label> <input id="cc-cvc" type="tel"
+                                                    class="input-lg form-control cc-cvc" autocomplete="off"
+                                                    placeholder="••••" required> </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group"> <label for="numeric" class="control-label">CARD HOLDER
+                                            NAME</label> <input type="text" class="input-lg form-control"> </div>
+                                    <div class="form-group"> <input value="MAKE PAYMENT" type="button"
+                                            class="btn btn-success btn-lg form-control" style="font-size: .8rem;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
 
             <footer class="my-5 pt-5 text-muted text-center text-small">
                 <p class="mb-1">&copy; Shoppit</p>
@@ -351,5 +386,34 @@
 
 </html>
 
+<script>
+    function chkcartnum() {
+        let amount = 0;
+        var caz = JSON.parse(localStorage.getItem('carts'));
+        var profile = JSON.parse(localStorage.getItem('UserInfo'));
+        var onlyUser = JSON.parse(localStorage.getItem('UserData'));
+        if (onlyUser == null || onlyUser[0] == undefined) {
+            if (caz == null) {
+                $('.badge').html(0);
+            } else {
+                caz.map(data => {
+                    amount = amount + data.amount;
+                });
+                $('.badge').html(amount);
+            }
+        } else {
+            if (profile[onlyUser[1]].userCart == undefined) {
+                $('.badge').html(0);
+            } else {
+                profile[onlyUser[1]].userCart.map(data => {
+                    amount = amount + data.amount;
+                })
+                $('.badge').html(amount);
+            }
+        }
+    }
+    chkcartnum();
+</script>
 <script src="../style.js"></script>
 <script src="../main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/3.0.0/jquery.payment.min.js"></script>
