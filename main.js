@@ -229,6 +229,8 @@ $(document).ready(function () {
             </div>
             `;
             $('.usa1').after(usa2);
+            console.log(onlyUser[0].username);
+
         }
 
         $('.logout').click(function () {
@@ -751,7 +753,8 @@ $(document).ready(function () {
     function checkoutbtn() {
         $('.checkoutbtn').click(function () {
             if (onlyUser == null || onlyUser[0] == undefined) {
-
+                alert('You are not logged in. Sign In please');
+                window.location.href = "../signup/index.html";
 
             } else {
                 window.location.href = "../checkout-page/index.html";
@@ -761,10 +764,11 @@ $(document).ready(function () {
 
     //function for checkout page
     $('#checkoutpage').html(function () {
-        displayuserinfo();
-        displayusercart();
-        validatecardinput();
+        redirect()
         navdom();
+        displayusercart();
+        displayuserinfo();
+        validatecardinput();
         payment();
     })
 
@@ -774,11 +778,15 @@ $(document).ready(function () {
         $('#username').val(profile[onlyUser[1]].username);
         $('#email').val(profile[onlyUser[1]].email);
 
-        $('#address').val(profile[onlyUser[1]].address);
-        $('#country').val(profile[onlyUser[1]].country);
-        $('#state').val(profile[onlyUser[1]].state);
-        $('#cc-name').val(profile[onlyUser[1]].cardinfo.cardname);
-        $('#cc-number').val(profile[onlyUser[1]].cardinfo.cardnumber);
+        if (profile[onlyUser[1]].address == undefined) {
+            return;
+        } else {
+            $('#address').val(profile[onlyUser[1]].address);
+            $('#country').val(profile[onlyUser[1]].country);
+            $('#state').val(profile[onlyUser[1]].state);
+            $('#cc-name').val(profile[onlyUser[1]].cardinfo.cardname);
+            $('#cc-number').val(profile[onlyUser[1]].cardinfo.cardnumber);
+        }
         // $('#cc-expiration').val(profile[onlyUser[1]].expirydate);
         // $('#cardcode').val(profile[onlyUser[1]].cardcode);
 
@@ -837,7 +845,19 @@ $(document).ready(function () {
     //function to finalise payment and add other details
     function payment() {
         $('.paybtn').click(function () {
-            // console.log(profile[onlyUser[1]]);
+            console.log(profile[onlyUser[1]]);
+
+            if (
+                $('#address').val() == '' ||
+                $('#country').val() == '' ||
+                $('#state').val() == '' ||
+                $('#cc-name').val() == '' ||
+                $('#cc-number').val() == '' ||
+                $('#cc-expiration').val() == '' ||
+                $('#cc-cvv').val() == ''
+            ) {
+                return;
+            }
 
             if (profile[onlyUser[1]].address == undefined) {
                 profile[onlyUser[1]].address = $('#address').val();
@@ -849,20 +869,25 @@ $(document).ready(function () {
                     expirydate: $('#cc-expiration').val(),
                     cardcode: $('#cc-cvv').val(),
                 };
-
-                localStorage.setItem('UserInfo', JSON.stringify(profile));
-
+                // localStorage.setItem('UserInfo', JSON.stringify(profile));
             } else {
                 if (profile[onlyUser[1]].cardinfo.expirydate == $('#cc-expiration').val() && profile[onlyUser[1]].cardinfo.cardcode == $('#cc-cvv').val()) {
                     console.log('correct');
-                    
+
                 } else {
                     console.log('incorrect');
-                    
+
                 }
 
             }
         })
+    }
+
+    //function to redirect to homepage
+    function redirect() {
+        if (onlyUser == null || onlyUser[0] == undefined) {
+            window.location.href = "../home-page/index.html";
+        }
     }
 
 
