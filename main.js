@@ -869,14 +869,24 @@ $(document).ready(function () {
                     expirydate: $('#cc-expiration').val(),
                     cardcode: $('#cc-cvv').val(),
                 };
-                // localStorage.setItem('UserInfo', JSON.stringify(profile));
+                localStorage.setItem('UserInfo', JSON.stringify(profile));
             } else {
                 if (profile[onlyUser[1]].cardinfo.expirydate == $('#cc-expiration').val() && profile[onlyUser[1]].cardinfo.cardcode == $('#cc-cvv').val()) {
                     console.log('correct');
-
+                    // loadicon();
+                    $('.loadicn').removeClass('d-none');
+                    setTimeout(() => {
+                        alert('Payment Successful');
+                        window.location.href = "../home-page/index.html";
+                    }, 2000);
+                    profile[onlyUser[1]].userCart = [];
+                    localStorage.setItem('UserInfo', JSON.stringify(profile));
                 } else {
                     console.log('incorrect');
-
+                    $('.invalidcd').removeClass('d-none');
+                    setTimeout(() => {
+                        $('.invalidcd').addClass('d-none');
+                    }, 3000);
                 }
 
             }

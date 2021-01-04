@@ -22,6 +22,9 @@
 </head>
 
 <body id="checkoutpage">
+    <div class="loadicn d-none">
+        <img src="../Images/Spinner-1s-101px.gif" alt="loading">
+    </div>
     <header class="mb-0">
         <nav class="navbar border-bottom shadow-sm" id="nav01">
             <div class="nav1">
@@ -106,6 +109,7 @@
     </header>
 
     <section>
+
         <div class="container">
             <div class="text-center">
                 <img class="d-block mx-auto mb-3" src="../Images/Online-Shopping-Cart-PNG-Background-Image.png" alt=""
@@ -180,7 +184,8 @@
                         <div class="row">
                             <div class="col-md-5 mb-3">
                                 <label for="country">Country</label>
-                                <input type="text" class="form-control" id="country" placeholder="country name" required>
+                                <input type="text" class="form-control" id="country" placeholder="country name"
+                                    required>
                                 <!-- <div class="invalid-feedback">
                                     Please select a valid country.
                                 </div> -->
@@ -246,9 +251,14 @@
                                     Security code required
                                 </div> -->
                             </div>
+
                         </div>
+                        <div class="invalidcd text-danger d-none">
+                            Incorrect card detail(s).
+                        </div>
+
                         <hr class="mb-4">
-                        <button class="paybtn btn btn-primary btn-lg btn-block w-75 type="submit">Make Payment</button>
+                        <button class="paybtn btn btn-primary btn-lg btn-block w-75 type=" submit">Make Payment</button>
                     </form>
                 </div>
             </div>
