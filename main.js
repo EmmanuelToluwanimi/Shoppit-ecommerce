@@ -463,6 +463,9 @@ $(document).ready(function () {
                 cartp = JSON.parse(cartp);
 
             } else {
+                if (profile[onlyUser[1]].userCart == undefined) {
+                    profile[onlyUser[1]].userCart = [];
+                }
                 serc = profile[onlyUser[1]].userCart.findIndex(serc => serc.title === sendme.title);
                 // console.log(serc);
                 if (serc == -1) {
@@ -526,6 +529,9 @@ $(document).ready(function () {
             }
         } else {
             // console.log(profile[onlyUser[1]].userCart);
+            if (profile[onlyUser[1]].userCart == undefined) {
+                profile[onlyUser[1]].userCart = [];
+            }
 
             for (items of profile[onlyUser[1]].userCart) {
                 console.log(items);
