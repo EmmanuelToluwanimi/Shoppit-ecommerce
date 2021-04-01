@@ -8,7 +8,7 @@ $(document).ready(function () {
             title: 'Runnable Shoes',
             price: 13.99,
             spec: 'Runnable Shoes Medium size Fashion and for Gym activites, very comfy for Runnuing.',
-            imageUrl: '../Images/pic15.png',
+            imageUrl: './Images/pic15.png',
             amount: 1
         },
         {
@@ -17,7 +17,7 @@ $(document).ready(function () {
             title: 'Male Sneakers',
             price: 19.99,
             spec: 'Male Sneakeres Large Size Fashion Casual Formal Shoes-BLUE.',
-            imageUrl: '../Images/5.jpg',
+            imageUrl: './Images/5.jpg',
             amount: 1
         },
         {
@@ -26,7 +26,7 @@ $(document).ready(function () {
             title: 'Student Backpack',
             price: 10.99,
             spec: 'Student Backpack Large Size Fashion Casual Formal Student bags, very comfy even with loads.',
-            imageUrl: '../Images/pic7.png',
+            imageUrl: './Images/pic7.png',
             amount: 1
         },
         {
@@ -35,7 +35,7 @@ $(document).ready(function () {
             title: 'Iphone11 4/64GB',
             price: 750.99,
             spec: 'Iphone11 4/64GB White 64G_original-new-apple-i-phone-11-dual-12-mp-c_variants-3',
-            imageUrl: '../Images/iphone11s.jpg',
+            imageUrl: './Images/iphone11s.jpg',
             amount: 1
         },
         {
@@ -44,7 +44,7 @@ $(document).ready(function () {
             title: 'Female Shoes',
             price: 199.99,
             spec: 'Female Shoes Medium Size Fashion Casual Formal Shoes-BLACK.',
-            imageUrl: '../Images/pic2.png',
+            imageUrl: './Images/pic2.png',
             amount: 1
         },
         {
@@ -53,7 +53,7 @@ $(document).ready(function () {
             title: 'Smart Wrist Watch',
             price: 10.99,
             spec: 'Smart Wrist Watch Bluetooth GSM Phone For Android Samsung IPhone (white).',
-            imageUrl: '../Images/1.jpg',
+            imageUrl: './Images/1.jpg',
             amount: 1
         },
         {
@@ -62,7 +62,7 @@ $(document).ready(function () {
             title: 'Sunlight Detergent',
             price: 5.99,
             spec: 'Sunlight 2in1 Spring Sensations Handwash Washing Powder 900g.',
-            imageUrl: '../Images/sunlight.jpg',
+            imageUrl: './Images/sunlight.jpg',
             amount: 1
         },
         {
@@ -71,7 +71,7 @@ $(document).ready(function () {
             title: 'Apple MacBook Pro',
             price: 2999.99,
             spec: 'Apple MacBook Pro - 16" Touch Bar - Intel Core I9 - 16GB - AMD Radeon Pro 5500M - 1TB SSD - Space Gray.',
-            imageUrl: '../Images/applelappy.jpg',
+            imageUrl: './Images/applelappy.jpg',
             amount: 1
         },
     ];
@@ -209,7 +209,7 @@ $(document).ready(function () {
     function loadicon() {
         $('.loadicn').removeClass('d-none');
         setTimeout(() => {
-            window.location.href = "../home-page/index.html";
+            window.location.href = "../index.html";
         }, 2000);
     }
 
@@ -236,7 +236,7 @@ $(document).ready(function () {
         $('.logout').click(function () {
             onlyUser = [];
             localStorage.setItem('UserData', JSON.stringify(userdata));
-            window.location.href = "../signup/index.html";
+            window.location.href = "./signup/index.html";
         })
     }
 
@@ -375,7 +375,7 @@ $(document).ready(function () {
             var sender = JSON.stringify(senderos);
             localStorage.setItem('xs', sender);
 
-            window.location.href = "../product-page/index.html";
+            window.location.href = "product-page/index.html";
         })
     }
 
@@ -440,7 +440,7 @@ $(document).ready(function () {
         var dis = `
         <div class="row">
         <div class="col-md-6">
-            <img src=${sendme.imageUrl} alt="applelaptop" width="100%">
+            <img src=.${sendme.imageUrl} alt="applelaptop" width="100%">
         </div>
         <div class="col-md-6 pt-2 pb-3">
             <h4>
@@ -555,7 +555,7 @@ $(document).ready(function () {
                     cpt = cpt.toFixed(2);
                     spy += `
                     <tr>
-                    <td><img src=${items.imageUrl} class="img-fluid img-click" width="50px"> </td>
+                    <td><img src=.${items.imageUrl} class="img-fluid img-click" width="50px"> </td>
                     <td colspan="2" class="title-click">${items.title}</td>
 
                     <td><input class="item-qty form-control w-50 mx-auto" type="number" value=${items.amount} min="1" /></td>
@@ -795,7 +795,7 @@ $(document).ready(function () {
     //function for btn to redirect to homepage
     function continueshoppingbtn() {
         $('.contbtn').click(function () {
-            window.location.href = "../home-page/index.html";
+            window.location.href = "../index.html";
         })
     }
 
@@ -927,7 +927,7 @@ $(document).ready(function () {
                     $('.loadicn').removeClass('d-none');
                     setTimeout(() => {
                         alert('Payment Successful');
-                        window.location.href = "../home-page/index.html";
+                        window.location.href = "../index.html";
                     }, 2000);
                     profile[onlyUser[1]].userCart = [];
                     localStorage.setItem('UserInfo', JSON.stringify(profile));
@@ -946,7 +946,7 @@ $(document).ready(function () {
     //function to redirect to homepage
     function redirect() {
         if (onlyUser == null || onlyUser[0] == undefined) {
-            window.location.href = "../home-page/index.html";
+            window.location.href = "../index.html";
         }
     }
 
