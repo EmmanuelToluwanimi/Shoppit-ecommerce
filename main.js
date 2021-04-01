@@ -223,7 +223,7 @@ $(document).ready(function () {
             var usa2 = `
             <div class="dropdown">
             <span>${onlyUser[0].username} <i class="fa fa-user"></i></span>
-            <div class="dropdown-content logout btn">
+            <div class="dropdown-content logout btn hvr-buzz-out">
                 Log Out <i class="fas fa-sign-out-alt"></i>
             </div>
             </div>
@@ -243,17 +243,18 @@ $(document).ready(function () {
     //Products to display in body of Homepage.
     $('#homepage').html(function () {
         displayproducts1();
-        displayproducts2();
+        // displayproducts2();
         homepageaddcart();
         navdom();
+        search();
     })
 
     function displayproducts1() {
         var spy = '';
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < awaProduct.length; i++) {
             const ele = awaProduct[i];
             // console.log(ele);
-            spy += `<div class="col-sm-12 col-md-3 p-2 tolu" >
+            spy += `<div class="col-sm-12 col-md-3 p-2 tolu hvr-float" >
             <div class="temi p-2">
             <img src=${ele.imageUrl}
                 alt="iphone11" class="img2" id=${ele.sid}>
@@ -263,7 +264,7 @@ $(document).ready(function () {
                 <del class="text-muted">$20,000</del>
                 <div>$${ele.price} </div>
             </div>
-            <button class="addcartbtn add-cart btn btn-primary shadow mt-2 w-100" id=${ele.id}>
+            <button class="addcartbtn hvr-float-shadow add-cart btn btn-primary shadow mt-2 w-100" id=${ele.id}>
                 ADD TO CART
             </button>
             </div>
@@ -312,6 +313,9 @@ $(document).ready(function () {
             setTimeout(() => {
                 $(this).closest('.temi').find('.msg').removeClass('d-block');
             }, 1500);
+
+            $('.jj').toggleClass('animate__heartBeat');
+            $('.badge').toggleClass('animate__bounceInDown');
 
             // console.log(awaProduct[this.id - 1]);
 
@@ -375,6 +379,46 @@ $(document).ready(function () {
         })
     }
 
+    //function to make products searchable
+    function search() {
+        $('.searchbar').keyup(function () {
+            getword($(this).val())
+
+        })
+
+    }
+
+    function getword(word) {
+        awaProduct.map(item => {
+            ser(item, word)
+
+        })
+
+    }
+    function ser(item, word) {
+        if (item.title.includes(word.toUpperCase())) {
+            spy = `<div class="col-sm-12 col-md-3 p-2 tolu" >
+            <div class="temi p-2">
+            <img src=${item.imageUrl}
+                alt="iphone11" class="img2" id=${item.sid}>
+            <div class="shomo mt-2 px-2">
+                <div class="d-none msg border border-success text-center text-success smalltext">Added to cart</div>
+                <div>${item.title}</div>
+                <del class="text-muted">$20,000</del>
+                <div>$${item.price} </div>
+            </div>
+            </div>
+            </div>
+            `;
+
+            $('.searchroom').append(spy);
+
+        } else {
+            console.log('not found');
+
+        }
+    }
+
 
     //selected products detail set in ls is gotten and displayed in productpage; 
     $('#productpage').html(function () {
@@ -420,7 +464,7 @@ $(document).ready(function () {
                 <del>$25,000.00</del>
             </div>
 
-            <button class="addcartbtd btn ff btn-primary mt-3 shadow w-100 btn-lg" id=${sendme.id}>ADD TO CART
+            <button class="addcartbtd animate__animated animate__bounceIn hvr-float-shadow btn ff btn-primary mt-3 shadow w-100 btn-lg" id=${sendme.id}>ADD TO CART
                 <i class="fab fa-opencart"></i>
             </button>
 

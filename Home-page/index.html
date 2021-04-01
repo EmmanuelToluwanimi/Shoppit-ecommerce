@@ -16,26 +16,32 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Courgette&family=Great+Vibes&family=Lobster&family=Roboto:wght@300&family=Sacramento&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover.css" />
     <link rel="stylesheet" href="homepage.css">
 
     <title>Shoppit/Home-page</title>
 </head>
 
 <body id="homepage">
-    <header>
+    <header class="animate__animated animate__slideInDown animate__delay-1s">
         <nav class="navbar border-bottom shadow-sm" id="nav01">
             <div class="nav1">
-                <img src="../Images/Online-Shopping-Cart-PNG-Background-Image.png" alt="cart Images" width="50px">
+                <img src="../Images/Online-Shopping-Cart-PNG-Background-Image.png"
+                    class="animate__animated animate__bounce animate__delay-1s" alt="cart Images" width="50px">
                 <h2 class="ml-1 pt-1 text-primary">Shoppit.</h2>
             </div>
 
             <div class="nav3 border">
-                <input type="text" class="border-0 shadow-none" placeholder="Search for products here">
+                <input type="text" class="searchbar border-0 shadow-none" placeholder="Search for products here">
                 <i class="fa fa-search"></i>
+            </div>
+            <div class="row searchroom border">
+
             </div>
 
             <div class="nav2">
-                <div>
+                <div class="hvr-pop">
                     <a href="../Home-page/index.html">Home</a>
                     <!-- <div class="nav-items border">
                         <a href="">Material</a>
@@ -45,18 +51,18 @@
                     </div> -->
                 </div>
 
-                <div>
+                <div class="hvr-pop">
                     <a href="#shop">Shop <i class="fas fa-shopping-bag"></i></a>
                 </div>
 
-                <div class="usa1 d-none">
+                <div class="usa1 d-none hvr-pop">
                     <a href="../Signup/index.html">Signup <i class="fa fa-user"></i></a>
                 </div>
 
-                <div>
+                <div class="hvr-pop jj animate__animated">
                     <a href="../Cart-page/index.html">Cart
                         <!-- <i class="fab fa-opencart"></i> -->
-                        <span class="badge badge-primary">0</span>
+                        <span class="badge badge-primary animate__animated">0</span>
                     </a>
                 </div>
             </div>
@@ -87,7 +93,7 @@
                     </div>
 
                     <div class="px-2 py-2">
-                        <a href="#" class="d-flex align-items-center">Shop <i class="fas fa-shopping-bag ml-2"></i></a>
+                        <a href="#shop" class="d-flex align-items-center">Shop <i class="fas fa-shopping-bag ml-2"></i></a>
                     </div>
 
                     <div class="px-2 py-2">
@@ -118,7 +124,7 @@
             <div class="carousel-inner">
                 <div class="carousel-item active" id="c1">
                     <!-- <img src="..." class="d-block w-100" alt="..."> -->
-                    <div class="carousel-caption d-md-block">
+                    <div class="carousel-caption d-md-block animate__animated animate__slideInLeft animate__delay-1s">
                         <h1>Clothing made for you</h1>
                         <p class="cp">
                             Trending for MEN and WOMEN style collection
@@ -229,7 +235,8 @@
 
         </div>
 
-        <div class="container shadow rounded p-3 mt-3 step2" id="shop">
+        <div class="container shadow rounded p-3 mt-3 step2 animate__animated animate__zoomIn animate__delay-3s"
+            id="shop">
             <h3 class="text-center p-2 bg-primary text-white shadow-sm">TRENDING PRODUCTS</h3>
             <div class="row show1 p-2">
             </div>
@@ -241,28 +248,28 @@
             <h4 class="p-2">Other products available</h4>
             <div class="gsm">
                 <div class="a-slide">
-                    <div class="card slds m-1">
+                    <div class="card slds m-1 hvr-float">
                         <img src="../Images/pic15.png" class="card-img-top" alt="shoes">
                         <div class="card-body p-2">
                             <div class="card-text">Runnable shoes</div>
                             <h6 class="mt-1">$20,000</h6>
                         </div>
                     </div>
-                    <div class="card slds m-1">
+                    <div class="card slds m-1 hvr-float">
                         <img src="../Images/pic11.png" class="card-img-top" alt="shoes">
                         <div class="card-body p-2">
                             <div class="card-text">Sketchers</div>
                             <h6 class="mt-1">$20,000</h6>
                         </div>
                     </div>
-                    <div class="card slds m-1">
+                    <div class="card slds m-1 hvr-float">
                         <img src="../Images/pic7.png" class="card-img-top" alt="shoes">
                         <div class="card-body p-2">
                             <div class="card-text">Student backpacks</div>
                             <h6 class="mt-1">$20,000</h6>
                         </div>
                     </div>
-                    <div class="card slds m-1">
+                    <div class="card slds m-1 hvr-float">
                         <img src="../Images/Green 64G_original-new-apple-i-phone-11-dual-12-mp-c_variants-3.jpg"
                             class="card-img-top p-1" alt="shoes">
                         <div class="card-body p-2">
@@ -270,35 +277,35 @@
                             <h6 class="mt-1">$20,000</h6>
                         </div>
                     </div>
-                    <div class="card slds m-1">
+                    <div class="card slds m-1 hvr-float">
                         <img src="../Images/pic2.png" class="card-img-top" alt="shoes">
                         <div class="card-body p-2">
                             <div class="card-text">Female shoes</div>
                             <h6 class="mt-1">$20,000</h6>
                         </div>
                     </div>
-                    <div class="card slds m-1">
+                    <div class="card slds m-1 hvr-float">
                         <img src="../Images/applelappy.jpg" class="card-img-top" alt="shoes">
                         <div class="card-body p-2">
                             <div class="card-text">Apple Lappy</div>
                             <h6 class="mt-1">$20,000</h6>
                         </div>
                     </div>
-                    <div class="card slds m-1">
+                    <div class="card slds m-1 hvr-float">
                         <img src="../Images/yellow-couch-by-black-and-white-mural.jpg" class="card-img-top" alt="shoes">
                         <div class="card-body p-2">
                             <div class="card-text">Luxury couch</div>
                             <h6 class="mt-1">$20,000</h6>
                         </div>
                     </div>
-                    <div class="card slds m-1">
+                    <div class="card slds m-1 hvr-float">
                         <img src="../Images/shirt.jpg" class="card-img-top" alt="shoes">
                         <div class="card-body p-2">
                             <div class="card-text">Luxury Vintage shirt</div>
                             <h6 class="mt-1">$20,000</h6>
                         </div>
                     </div>
-                    <div class="card slds m-1">
+                    <div class="card slds m-1 hvr-float">
                         <img src="../Images/wrist-watches.jpg" class="card-img-top" alt="shoes">
                         <div class="card-body p-2">
                             <div class="card-text">Luxury wrist-watches</div>
