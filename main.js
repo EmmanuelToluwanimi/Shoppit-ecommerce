@@ -375,7 +375,7 @@ $(document).ready(function () {
             var sender = JSON.stringify(senderos);
             localStorage.setItem('xs', sender);
 
-            window.location.href = "../product-page/index.html";
+            window.location.href = "../Product-page/index.html";
         })
     }
 
@@ -683,7 +683,7 @@ $(document).ready(function () {
             var sender = JSON.stringify(senderos);
             localStorage.setItem('xs', sender);
 
-            window.location.href = "../product-page/index.html";
+            window.location.href = "../Product-page/index.html";
         })
     }
 
@@ -804,10 +804,10 @@ $(document).ready(function () {
         $('.checkoutbtn').click(function () {
             if (onlyUser == null || onlyUser[0] == undefined) {
                 alert('You are not logged in. Sign In please');
-                window.location.href = "../signup/index.html";
+                window.location.href = "../Signup/index.html";
 
             } else {
-                window.location.href = "../checkout-page/index.html";
+                window.location.href = "../Checkout-page/index.html";
             }
         })
     }
