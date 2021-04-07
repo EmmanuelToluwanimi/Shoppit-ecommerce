@@ -375,7 +375,7 @@ $(document).ready(function () {
             var sender = JSON.stringify(senderos);
             localStorage.setItem('xs', sender);
 
-            window.location.href = "./product-page/index.html";
+            window.location.href = "../product-page/index.html";
         })
     }
 
