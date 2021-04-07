@@ -375,7 +375,7 @@ $(document).ready(function () {
             var sender = JSON.stringify(senderos);
             localStorage.setItem('xs', sender);
 
-            window.location.href = "../Product-page/index.html";
+            window.location.href = "./product-page/index.html";
         })
     }
 
@@ -429,7 +429,7 @@ $(document).ready(function () {
 
     function productInfo() {
         document.querySelector('.ee').addEventListener('click', function () {
-            window.location.href = "../Cart-page/index.html";
+            window.location.href = "./cart-page/index.html";
         })
 
         var sender = localStorage.getItem('xs');
@@ -683,7 +683,7 @@ $(document).ready(function () {
             var sender = JSON.stringify(senderos);
             localStorage.setItem('xs', sender);
 
-            window.location.href = "../Product-page/index.html";
+            window.location.href = "../product-page/index.html";
         })
     }
 
@@ -807,7 +807,7 @@ $(document).ready(function () {
                 window.location.href = "../Signup/index.html";
 
             } else {
-                window.location.href = "../Checkout-page/index.html";
+                window.location.href = "./checkout-page/index.html";
             }
         })
     }
